@@ -1,0 +1,28 @@
+	.avt {
+		width: auto;
+		height: 70px;
+	}
+	.avtfr {
+		display: inline-block;
+		height: 70px;
+		width: 70px;
+		overflow: hidden;
+	}
+	.fr {
+		display: inline-block;
+		width: 76px;
+		height: 76px;
+		padding: 3px;
+	}
+	.content {
+		display: inline-block;
+	}
+	.btn {
+		display: inline-block;
+		height: 25px;
+		line-height: 70%;
+	}
+	
+	.item{
+		margin-bottom : 10px;
+	}

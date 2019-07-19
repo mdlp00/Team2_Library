@@ -1,0 +1,51 @@
+.tp5 {
+	margin-top: 5px;
+}
+.tp10 {
+	margin-top: 10px;
+}
+.tp20 {
+	margin-top: 20px;
+}
+.bt5 {
+	margin-bottom: 5px;
+}
+.bt10 {
+	margin-bottom: 10px;
+}
+.bt20 {
+	margin-bottom: 20px;
+}
+
+.hrzero {
+	padding-left: 0px;
+	padding-right: 0px;
+}
+.vtpad30 {
+	padding-top: 30px;
+	padding-bottom: 30px;
+}
+
+.img {
+	width: 80px;
+	height: auto;
+}
+.imgfr {
+	width: 82px;
+	height: 82px;
+	overflow: hidden;
+}
+.outfr {
+	width: 92px;
+	text-align: center;
+}
+.min {
+	min-width: 625px;
+}
+.ttlbox {
+	width: 100px;
+}
+
+.btnW50 {
+	width: 50px !important;
+}

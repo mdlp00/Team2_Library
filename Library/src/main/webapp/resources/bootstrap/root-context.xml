@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans 
+	xmlns="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+						https://www.springframework.org/schema/beans/spring-beans.xsd
+						http://www.springframework.org/schema/context
+						http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+	
+	<!-- 
+		다른 스키마에 있는 내용을 읽을 수 있도록 선언해준다.
+		이 annotation-config 태그는 기본 xml 에서는 제공하지 않는 태그이다.
+		이 태그를 사용하도록 하기 위해서는 context라는 스키마를 사용하겠다고 선언해줘야 한다.
+		
+		방법]
+		1. 스키마 사용을 선언해준다.
+		2. 해당 스키마를 번역(파싱)할 수있는 도구를 지정해줘야 한다.
+	-->
+	<context:annotation-config />
+<!--  Spring Version 4.1.6 미만 
+	<bean id="jsonHttpMessageConverter" class="org.springframework.http.converter.json.MappingJacksonHttpMessageConverter" /> 
+ 	
+ 	<bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter"> 
+	 	<property name="messageConverters"> 
+		 	<list> 
+		 		<ref bean="jsonHttpMessageConverter"/> 
+		 	</list> 
+	 	</property> 
+ 	</bean>
+-->
+	
+<!-- Spring Version 4.1.6 이상 -->
+<!-- JSon -->  	
+<!-- 
+<bean id="jsonHttpMessageConverter" class="org.springframework.http.converter.json.GsonHttpMessageConverter" />
+ -->
+<!-- JSon2 -->
+
+	<bean id="jsonHttpMessageConverter" class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
+	    <property name="supportedMediaTypes" value="application/json"/>
+	</bean>
+	
+<!-- 
+	<bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter">
+		<property name="messageConverters">
+		  <list>
+			<ref bean="jsonHttpMessageConverter"/>
+		  </list>
+		</property>
+	</bean>
+ -->
+	
+	<!-- dataSource 등록 -->
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
+		<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver" />
+		<property name="url" value="jdbc:oracle:thin:@localhost:1521:xe" />
+		<property name="username" value="increpas" />
+		<property name="password" value="increpas" />
+		<property name="maxActive" value="8" />
+	</bean>
+	
+	<!-- myBatis 환경설정 -->
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<property name="configLocation" value="classpath:/resources/mybatis-config.xml" />
+	</bean>
+	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
+		<constructor-arg index="0" ref="sqlSessionFactory" />
+	</bean>
+	
+	<!-- DAO Class 빈처리 -->
+	<import resource="./appServlet/daoContext.xml" />
+	
+	<!-- service Class 빈처리 -->
+	<import resource="./appServlet/serviceContext.xml" />
+	
+</beans>
