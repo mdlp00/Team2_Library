@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
+			"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="nSQL">
+
+	<insert id="insertBar" parameterType="nVO">
+		<selectKey keyProperty="m_name" resultType="String" order="BEFORE">
+		
+		SELECT
+    		 manager_name m_name
+		FROM
+			 manager
+			WHERE manager_name = #{writer}
+		</selectKey>
+
+		INSERT INTO
+            notice(n_no, n_title, manager_name, n_body)
+        values (
+	        (SELECT NVL(MAX(n_no)+1, 1) FROM notice),
+	        #{n_title},#{manager_name}, #{body}
+	        )
+
+		</insert>
+</mapper>
+
+		
