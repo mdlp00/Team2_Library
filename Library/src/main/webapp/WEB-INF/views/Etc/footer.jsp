@@ -9,13 +9,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/assets/css/main.css" />
 <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/resources/assets/css/w3.css" />
-<script type="text/javascript" src=".${pageContext.request.contextPath}/resources/assets/js/jquery-3.4.1.min.js"></script>
-   <!-- Scripts -->
-         <script src="${pageContext.request.contextPath}/resources/assets/js/jquery.min.js"></script>
-         <script src="${pageContext.request.contextPath}/resources/assets/js/jquery.scrolly.min.js"></script>
-         <script src="${pageContext.request.contextPath}/resources/assets/js/skel.min.js"></script>
-         <script src="${pageContext.request.contextPath}/resources/assets/js/util.js"></script>
-         <script src="${pageContext.request.contextPath}/resources/assets/js/main.js"></script>
 
 <style type="text/css">
 
@@ -72,7 +65,7 @@ body{
 <body>
    <div id="myfooter">
       <div class="divimg divinline">
-         <img src="img/   logo.png" id="dimg" />
+         <img src="${pageContext.request.contextPath}/resources/img/Logo.png" id="dimg" />
       </div>
       <div class="divtext divinline">
          <span class="s1"><b>우편번호 : </b>서울특별시 관악구 서울특별시 관악구 조원용 1655-24</span>
