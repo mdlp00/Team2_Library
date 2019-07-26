@@ -33,5 +33,10 @@
 	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
 		<constructor-arg index="0" ref="sqlSessionFactory" />
 	</bean>
-		
+	
+	<!-- DAO Class 빈처리 -->
+	<import resource="./appServlet/daoContext.xml" />
+	
+	<!-- Service Class 빈처리 -->
+	<import resource="./appServlet/serviceContext.xml" />
 </beans>

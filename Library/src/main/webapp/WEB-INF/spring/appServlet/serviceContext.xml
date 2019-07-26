@@ -9,13 +9,7 @@
 		http://www.springframework.org/schema/context/spring-context-4.3.xsd">
 	
 	<context:annotation-config />
-		
-	<bean id="studyDAO" class="com.library.bo.dao.StudyRoom.StudyRoomDAO" />
-<!-- 	<bean id="nDAO" class="com.library.bo.dao.BookInfo." />
-	<bean id="nDAO" class="com.library.bo.dao.BookSearch." />
-	<bean id="nDAO" class="com.library.bo.dao.MemberInfo." />
-	<bean id="nDAO" class="com.library.bo.dao.ReadingRoom." />
-	<bean id="nDAO" class="com.library.bo.dao.LibraryInfo.NoticeDAO" />
-	<bean id="nDAO" class="com.library.bo.dao. ManagerPage." /> -->
+
+	<bean id="studyService" class="com.library.bo.service.StudyRoom.StudyRoomService" />
 	
 </beans>

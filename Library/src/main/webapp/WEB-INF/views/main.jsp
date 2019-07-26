@@ -1,9 +1,8 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-<title>Generic - Intensify by TEMPLATED</title>
+<title>Main Page</title>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/assets/css/main.css" />
@@ -17,23 +16,13 @@
 			<script src="${pageContext.request.contextPath}/resources/assets/js/main.js"></script>
 			
 <style type="text/css">
-	.p{
-	color : white;
+	.p {
+		color : white;
 	}
 </style>
 </head>
 <body>
 	<jsp:include page="Etc/listbar.jsp"/>
-	<!-- Header -->
-	<header id="header">
-		<nav class="left">
-			<a href="#menu"><span>Menu</span></a> 
-		</nav>
-		<a href="index.jsp" class="logo">Daye Library</a>
-		<nav class="right">
-			<a href="#" class="button alt">Log in</a>
-		</nav>
-	</header>
 
 	<!-- Banner -->
 	<section id="banner" style="background-image:url('${pageContext.request.contextPath}/resources/img/MainP.jpg');">
@@ -140,8 +129,5 @@
 			&copy; Untitled. Design <a href="https://templated.co">TEMPLATED</a>. Images <a href="https://unsplash.com">Unsplash</a>.
 		</div>
 	</footer>
-
-	
-
 </body>
 </html>
