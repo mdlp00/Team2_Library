@@ -26,7 +26,7 @@ body{
 }
 
 #myfooter {
-    position : absolute !important;
+    position : absolute !important; 
     bottom : -100 !important;
     width : 100% !important;
     height : 150px !important;
