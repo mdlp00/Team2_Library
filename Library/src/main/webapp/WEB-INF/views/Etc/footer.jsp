@@ -26,13 +26,14 @@ body{
 }
 
 #myfooter {
-    /* position : absolute !important; */
-    bottom : 0 !important;
+    position : absolute !important;
+    bottom : -100 !important;
     width : 100% !important;
     height : 150px !important;
     float : left !important;
     font-size : 12px !important;
     border-top : 2px solid gray !important;
+    
 }
 
 .divimg{
