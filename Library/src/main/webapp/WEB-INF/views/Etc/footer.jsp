@@ -34,7 +34,7 @@ body{
     font-size : 12px !important;
     border-top : 2px solid gray !important;
     
-}
+}  
 
 .divimg{
    height : 100% !important;
