@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 
+ * 
+ * @author	강찬규
+ * @since	2019.07.23
+ * @version	1.0
+ * @see
+ * 			변경 이력 관리
+ * 			2019.07.23		StudyRoomSQL.xml 제작		작성자 : 강찬규
+ * 			2019.07.23		selDate 제작				작성자 : 강찬규
+ * 			2019.07.23		reserveDate 제작			작성자 : 강찬규
+ *
+ -->
+<mapper namespace="studySQL">
+<!-- SELECT -->
+	<!-- 날짜에 따른 예약 내역 불러오는 질의 명령 -->
+	<select id="selDate" resultType="studyVO" parameterType="hashmap">
+		SELECT
+			roomCode, rDate, startTime, endTime, sDate, eDate
+		FROM(
+				SELECT
+					ROOM_CODE roomCode, substr(START_DATE, 1, 10) rDate, substr(START_DATE, 12) startTime,
+					substr(END_DATE, 12) endTime, START_DATE sDate, END_DATE eDate
+				FROM
+					ROOM
+				WHERE
+					ROOM_CODE = #{roomCode}
+					AND ROOM_ISSHOW = 'N'
+			)
+		WHERE
+			rDate = #{date}
+	</select>
+	
+<!-- INSERT -->
+	<!-- 예약하기 -->
+	<insert id="reserveDate" parameterType="studyVO">
+		INSERT INTO
+			room(room_no, room_code, start_date, end_date)
+		VALUES(
+			(SELECT NVL(MAX(room_no)+1, 100001) FROM room), #{roomCode}, #{sDate}, #{eDate}
+		)
+	</insert>
+
+<!-- UPDATE -->
+</mapper>
