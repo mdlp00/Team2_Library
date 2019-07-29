@@ -53,7 +53,7 @@
 </head>
 <body>
    <div id="myfooter"> 
-      <div class="divimg divinline">
+      <div class="divimg divinline"> 
          <img src="${pageContext.request.contextPath}/resources/img/Logo.png" id="dimg" />
       </div>
       <div class="divtext divinline">
