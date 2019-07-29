@@ -134,7 +134,7 @@ $(function(){
 					<p>Placerat ornare. Pellentesque od sed euismod in, pharetra ltricies edarcu cas consequat.</p>
 				</div>
 			</div>
-			<div class="flex-item box">
+		 <div class="flex-item box">
 				<div class="image fit">
 					<img src="/bo/resources/img/studyM_1.jpg" alt="" />
 				</div>
