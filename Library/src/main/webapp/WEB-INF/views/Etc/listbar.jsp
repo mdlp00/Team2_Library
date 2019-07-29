@@ -8,7 +8,7 @@
 <title>List Bar Page</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/assets/css/main.css" />
 <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/resources/assets/css/w3.css" />
-<script type="text/javascript" src=".${pageContext.request.contextPath}/resources/assets/js/jquery-3.4.1.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/assets/js/jquery-3.4.1.min.js"></script>
    <!-- Scripts -->
          <script src="${pageContext.request.contextPath}/resources/assets/js/jquery.min.js"></script>
          <script src="${pageContext.request.contextPath}/resources/assets/js/jquery.scrolly.min.js"></script>
@@ -72,16 +72,16 @@
 		<nav class="left">
 			<a href="#menu"><span>Menu</span></a>
 		</nav>
-		<a href="${pageContext.request.contextPath}/study/goMain.ti" class="logo">Daye Library</a>
+		<a href="${pageContext.request.contextPath}/study/goMain.bo" class="logo">Daye Library</a>
 		<nav class="right">
-			<a href="/ti/img/MainL.jpg" class="button alt">Log in</a>
+			<a href="/bo/img/MainL.jpg" class="button alt">Log in</a>
 		</nav>
 	</header>
 
 	<!-- Menu -->
 	<nav id="menu">
 		<ul class="links">
-			<li><a href="${pageContext.request.contextPath}/study/goMain.ti" class="btn1">메인페이지</a></li>
+			<li><a href="${pageContext.request.contextPath}/study/goMain.bo" class="btn1">메인페이지</a></li>
 			<li><a href="#" class="btn1" id="search" >자료검색</a>
 			<div class="subMenu">
 				<ul>
