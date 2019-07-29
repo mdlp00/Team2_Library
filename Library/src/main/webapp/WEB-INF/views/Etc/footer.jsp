@@ -1,22 +1,13 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Generic - Intensify by TEMPLATED</title>
-<meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/assets/css/main.css" />
 <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/resources/assets/css/w3.css" />
 
 <style type="text/css">
-
-
-body{
-/*    margin : 0px !important;
-   padding : 0px !important; */
-}
 
 #myfooter {
     position : absolute !important; 
@@ -58,12 +49,10 @@ body{
 }
 
 </style>
-<script type="text/javascript">
 
-</script>
 </head>
 <body>
-   <div id="myfooter">
+   <div id="myfooter"> 
       <div class="divimg divinline">
          <img src="${pageContext.request.contextPath}/resources/img/Logo.png" id="dimg" />
       </div>
