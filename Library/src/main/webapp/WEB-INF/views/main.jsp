@@ -1,31 +1,71 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
-<title>Main Page</title>
+<title>Generic - Intensify by TEMPLATED</title>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/assets/css/main.css" />
-<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/w3.css" />
-<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jquery-3.4.1.min.js"></script>
+<link rel="stylesheet" href="/bo/resources/assets/css/main.css" />
+<link type="text/css" rel="stylesheet" href="/bo/resources/css/w3.css" />
+<script type="text/javascript" src="/bo/resources/js/jquery-3.4.1.min.js"></script>
 	<!-- Scripts -->
-			<script src="${pageContext.request.contextPath}/resources/assets/js/jquery.min.js"></script>
-			<script src="${pageContext.request.contextPath}/resources/assets/js/jquery.scrolly.min.js"></script>
-			<script src="${pageContext.request.contextPath}/resources/assets/js/skel.min.js"></script>
-			<script src="${pageContext.request.contextPath}/resources/assets/js/util.js"></script>
-			<script src="${pageContext.request.contextPath}/resources/assets/js/main.js"></script>
-			
+			<script src="/bo/resources/assets/js/jquery.min.js"></script>
+			<script src="/bo/resources/assets/js/jquery.scrolly.min.js"></script>
+			<script src="/bo/resources/assets/js/skel.min.js"></script>
+			<script src="/bo/resources/assets/js/util.js"></script>
+			<script src="/bo/resources/assets/js/main.js"></script>
+
+<script type="text/javascript">
+var sid = '${SID}';
+$(function(){
+	if(sid){
+		$('#lbtn').html('LogOut');
+		$('#lbtn').attr('id', 'lout');
+	}		      
+	
+	$('.button').click(function(){
+		var ttl = $(this).attr('id');
+		var target = '';
+		switch(ttl){
+		case 'lbtn':
+			target = 'login.bo';
+			break;
+		case 'lout':
+			target = 'logoutProc.bo';
+			alert('로그아웃 되었습니다.');
+			break;
+		}
+			$(location).attr('href', 'MemberInfo/' + target);
+	}); 
+});
+
+</script>
 <style type="text/css">
-	.p {
-		color : white;
+	.p{
+	color : white;
 	}
 </style>
 </head>
 <body>
-	<jsp:include page="Etc/listbar.jsp"/>
+	<%-- <jsp:include page="Etc/listbar.jsp"/> --%>
+	<!-- Header -->
+	<header id="header">
+		<nav class="left">
+			<a href="#menu"><span>Menu</span></a> 
+		</nav>
+		<a href="index.jsp" class="logo">Daye Library</a>
+		<nav class="right">
+			<c:if test="${not empty SID}">
+			<h4 style='display:inline'>${SID} 님</h4>
+			</c:if>
+			<a id="lbtn" class="button alt">Login</a>
+		</nav>
+	</header>
 
 	<!-- Banner -->
-	<section id="banner" style="background-image:url('${pageContext.request.contextPath}/resources/img/MainP.jpg');">
+	<section id="banner" style="background-image:url('/bo/resources/img/MainP.jpg');">
 		<div class="content p" style="font-weight: bold;" >
 			<div style="font-weight: bold;">
 			<h1 style="color: #11CFE5;">Live always in the best company when you read</h1>
@@ -51,7 +91,7 @@
 				</div>
 			</div>
 			<div class="flex-item image fit round">
-				<img src="${pageContext.request.contextPath}/resources/img/Main.jpg" alt="" />
+				<img src="/bo/resources/img/Main.jpg" alt="" />
 			</div>
 			<div class="flex-item right">
 				<div>
@@ -87,7 +127,7 @@
 		<div class="inner flex flex-3">
 			<div class="flex-item box">
 				<div class="image fit">
-					<img src="${pageContext.request.contextPath}/resources/img/studyL_2.jpg" alt="" />
+					<img src="/bo/resources/img/studyL_2.jpg" alt="" />
 				</div>
 				<div class="content">
 					<h3>Consequat</h3>
@@ -96,7 +136,7 @@
 			</div>
 			<div class="flex-item box">
 				<div class="image fit">
-					<img src="${pageContext.request.contextPath}/resources/img/studyM_1.jpg" alt="" />
+					<img src="/bo/resources/img/studyM_1.jpg" alt="" />
 				</div>
 				<div class="content">
 					<h3>Adipiscing</h3>
@@ -105,7 +145,7 @@
 			</div>
 			<div class="flex-item box">
 				<div class="image fit">
-					<img src="${pageContext.request.contextPath}/resources/img/studyS_2.jpg" alt="" />
+					<img src="/bo/resources/img/studyS_2.jpg" alt="" />
 				</div>
 				<div class="content">
 					<h3>Malesuada</h3>
@@ -129,5 +169,8 @@
 			&copy; Untitled. Design <a href="https://templated.co">TEMPLATED</a>. Images <a href="https://unsplash.com">Unsplash</a>.
 		</div>
 	</footer>
+
+	
+
 </body>
 </html>
