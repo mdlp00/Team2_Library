@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
+			"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+			
+<mapper namespace="mSQL">
+	<sql id="cntID">
+		SELECT
+			count(*) cnt
+		FROM
+			member
+		WHERE
+			m_id = #{mid}
+	</sql>
+	
+	<!-- 로그인 질의 명령 -->
+	<select id="loginCnt" resultType="int" parameterType="mVO">
+		<include refid="cntID" />
+			AND m_pw = #{mpw}
+			<!-- AND m_isshow = 'Y' -->
+	</select>
+	
+	<select id="idCnt" resultType="int" parameterType="String">
+		<include refid="cntID"/>
+	</select>
+	
+	<select id="selMemb" resultType="mVO">
+            select
+                m_name mname, m_id mid, m_pw mpw, m_no mno, m_addr maddr, m_tel mtel, 
+                m_mail mmail, m_birth mbirth, m_join mjoin
+            from
+                member
+            where
+                m_isshow = 'Y'
+	</select>
+	
+		<insert id="insertMember" parameterType="mVO">	 	
+		 	<selectKey keyProperty="mno" resultType="int" order="BEFORE">
+				SELECT NVL(MAX(m_no) + 1, 1) from member
+		 	</selectKey>	
+				INSERT INTO
+					member(
+						m_no, m_id, m_pw, m_name, m_tel, 
+						m_addr, m_mail, m_birth
+					)
+				VALUES(
+					#{mno}, #{mid}, #{mpw}, #{mname}, #{mtel},
+					#{maddr}, #{mail}, #{mbirth}
+				)
+		</insert>
+	
+		<insert id="addMember" parameterType="mVO">
+			<selectKey keyProperty="mVO" resultType="int" order="BEFORE">
+				SELECT NVL(MAX(m_no)+1, 1) from member
+			</selectKey>
+			INSERT INTO
+				member(
+					m_no, m_id, m_pw, m_name, m_tel, 
+					m_addr, m_mail, m_birth
+				)
+			VALUES(
+				#{mno}, #{mid}, #{mpw}, #{mname}, #{mtel}, 
+				{maddr}, #{mail}, #{mbirth}
+			)
+		</insert>
+</mapper>

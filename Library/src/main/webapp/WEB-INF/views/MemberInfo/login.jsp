@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,15 +7,15 @@
 <title>Generic - Intensify by TEMPLATED</title>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/assets/css/main.css" />
-<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/w3.css" />
-<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jquery-3.4.1.min.js"></script>
+<link rel="stylesheet" href="/bo/resources/assets/css/main.css" />
+<link type="text/css" rel="stylesheet" href="/bo/resources/css/w3.css" />
+<script type="text/javascript" src="/bo/resources/js/jquery-3.4.1.min.js"></script>
 	<!-- Scripts -->
-			<script src="${pageContext.request.contextPath}/resources/assets/js/jquery.min.js"></script>
-			<script src="${pageContext.request.contextPath}/resources/assets/js/jquery.scrolly.min.js"></script>
-			<script src="${pageContext.request.contextPath}/resources/assets/js/skel.min.js"></script>
-			<script src="${pageContext.request.contextPath}/resources/assets/js/util.js"></script>
-			<script src="${pageContext.request.contextPath}/resources/assets/js/main.js"></script>
+			<script src="/bo/resources/assets/js/jquery.min.js"></script>
+			<script src="/bo/resources/assets/js/jquery.scrolly.min.js"></script>
+			<script src="/bo/resources/assets/js/skel.min.js"></script>
+			<script src="/bo/resources/assets/js/util.js"></script>
+			<script src="/bo/resources/assets/js/main.js"></script>
 			
 <style type="text/css">
 
@@ -74,14 +74,15 @@
 
 $(document).ready(function(){
 	$('#btn').click(function(){
-		$('#frm').attr('action', 'loginProc.c3');
+		$('#frm').attr('action', 'loginProc.bo');
 		$('#frm').submit();
 	});
 	
 	$('#pw_renew').click(function(){
-		$(location).attr('href', 'passwordRenew.c3');
+		$(location).attr('href', 'passwordRenew.bo');
 	
-		)};
+	});
+});
 	
 	
 	
@@ -106,7 +107,7 @@ $(document).ready(function(){
 			<div class="w3-content w3-center" style="border: 1px solid #e66e63; margin-top: 80px; width: 400px;
 		height: 400px;">
 				<div class="w3-padding-large">
-					<form method="POST" action="#" name="frm" id="frm">
+					<form method="POST" action="MemberInfo/loginProc.bo" name="frm" id="frm">
 						<div class="w3-row w3-margin">
 							<div style="display: inline-block; width: 10px;"></div>
 							<span class="mint" style="font-size: 13pt; width: 30px; height: 30px;">로그인 정보를 입력해주세요</span>
@@ -116,7 +117,7 @@ $(document).ready(function(){
 							<div style="display: inline-block; "></div>
 							<div style="display: inline-block;">
 								<div style="color: gray;">아이디</div>
-								<input type="text" class="inp" id="id" name="id" />
+								<input type="text" class="inp" id="id" name="mid" />
 							</div>
 						</div>
 						<div><p></p></div>
@@ -124,7 +125,7 @@ $(document).ready(function(){
 							<div style="display: inline-block; width: 15px;"></div>
 							<div style="display: inline-block;">
 								<div style="color: gray;">비밀번호</div>
-								<input type="password" class="inp" id="pw" name="pw" />
+								<input type="password" class="inp" id="pw" name="mpw" />
 							</div>
 						</div>
 						<div><p></p></div>
@@ -143,11 +144,5 @@ $(document).ready(function(){
 			</div>
 		</div>
 
-	
-		<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/jquery.scrolly.min.js"></script>
-			<script src="assets/js/skel.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<script src="assets/js/main.js"></script>
 </body>
 </html>

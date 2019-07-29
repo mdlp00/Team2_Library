@@ -7,15 +7,15 @@
 <title>Generic - Intensify by TEMPLATED</title>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/assets/css/main.css" />
-<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/w3.css" />
-<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jquery-3.4.1.min.js"></script>
+<link rel="stylesheet" href="/bo/resources/assets/css/main.css" />
+<link type="text/css" rel="stylesheet" href="/bo/resources/css/w3.css" />
+<script type="text/javascript" src="/bo/resources/js/jquery-3.4.1.min.js"></script>
 	<!-- Scripts -->
-			<script src="${pageContext.request.contextPath}/resources/assets/js/jquery.min.js"></script>
-			<script src="${pageContext.request.contextPath}/resources/assets/js/jquery.scrolly.min.js"></script>
-			<script src="${pageContext.request.contextPath}/resources/assets/js/skel.min.js"></script>
-			<script src="${pageContext.request.contextPath}/resources/assets/js/util.js"></script>
-			<script src="${pageContext.request.contextPath}/resources/assets/js/main.js"></script>
+			<script src="/bo/resources/assets/js/jquery.min.js"></script>
+			<script src="/bo/resources/assets/js/jquery.scrolly.min.js"></script>
+			<script src="/bo/resources/assets/js/skel.min.js"></script>
+			<script src="/bo/resources/assets/js/util.js"></script>
+			<script src="/bo/resources/assets/js/main.js"></script>
 			
 <style type="text/css">
 	 body {
@@ -107,7 +107,7 @@
 		});
 		
 		$('#reid').click(function(){
-			var mid = $('#id').val();
+			var mid = document.getElementById('id').value;
 			var re = /^[a-z A-Z 0-9]{3,11}$/;
 			// 정규식 검사
 			if(!(re.test(mid))){
@@ -116,7 +116,7 @@
 			}		
 			// ajax 처리
 			$.ajax({
-				url : "./idcheck.ck",
+				url : "idCheck.bo",
 				type: "POST",
 				dataType: "json",
 				data: {
@@ -135,7 +135,7 @@
 				error: function(){
 					alert("처리 에러")
 				}
-			});
+			}); 
 		});
 
 		// 회원가입 버튼 클릭
@@ -150,7 +150,7 @@
 			var mtel = $('#tel').val();
 			// 미 기입 여부 확인
 			if(!mid || !mpw || !mname || !mbirth || !maddr || !mtel){
-				alert('mid'+ mid + '\r\n mpw'+ mpw + '\r\n mname'+ mnname + '\r\n mbirth' +mbitrh + '\r\n mail' + mail+ '\r\n maddr' + maddr + '\r\n mtel' + mtel);
+				alert('mid'+ mid + '\r\n mpw'+ mpw + '\r\n mname'+ mname + '\r\n mbirth' +mbitrh + '\r\n mail' + mmail+ '\r\n maddr' + maddr + '\r\n mtel' + mtel);
 				return;
 			}
 			// 아이디 체크 여부 확인
@@ -181,14 +181,14 @@
 			<header id="header">
 							<a href="index.html" class="logo"> Daye Library</a>
 							<nav class="right">
-								<a href="#" class="button alt">Log in</a>
+								<a href="#" class="button alt">Login</a>
 							</nav>
 			</header>
 		<!-- Header -->
-			<header id="header">c
+			<header id="header">
 				<a href="index.html" class="logo"> Daye Library</a>
 				<nav class="right">
-					<a href="#" class="button alt">Log in</a>
+					<a href="#" class="button alt">Login</a>
 				</nav>
 			</header>
 
@@ -196,47 +196,48 @@
 		<h1 class="w3-container w3-text-white" style="font-weight: bold; font-size: 200%;"></h1>
 	</div> 
 	<div class="w3-col m3"><p></p></div>
-	<div class="w3-center w3-col m9"> <a style="text-decoration:none;"><h1>회원가입</h1> </a>
-		<div class="w3-container w3-card-4 w3-light-grey w3-margin">
-		<form method="POST" action="joinProc.c3" id="frm" name="frm"> 
-			<div class="w3-row b1">
-				<label class="b2" >아이디 입력 : </label>
-				<input class="it2" id="id" name="id" type="text" placeholder="아이디 입력">
-				<div class="w3-button w3-center in1" id="reid" >중복확인</div>   
+	<div class="w3-center w3-col m9"> 
+		<a style="text-decoration:none;"><h1>회원가입</h1> </a>
+			<div class="w3-container w3-card-4 w3-light-grey w3-margin">
+				<form method="POST" action="joinProc.bo" id="frm" name="frm"> 
+					<div class="w3-row b1">
+						<label class="b2" >아이디 입력 : </label>
+						<input class="it2" id="id" name="mid" type="text" placeholder="아이디 입력">
+					<div class="w3-button w3-center in1" id="reid" >중복확인</div>   
+					</div>
+					<div class="w3-row b1">
+						<label class="b2">비밀번호 입력 : </label>
+						<input class="w3-border it" id="pw" name="mpw" type="password" placeholder="비밀번호 입력">
+					</div>
+					<div class="w3-row b1">
+						<label class="b2" id="repw2">비밀번호  재입력 : </label>
+						<input class="w3-border it" id="repw" name="repw" type="password" placeholder="비밀번호 재입력">
+					</div>
+					<div class="w3-row b1">
+						<label class="b2">이름 입력 : </label>
+						<input class="w3-border it" id="name" name="mname" type="text" placeholder="이름 입력">
+					</div>
+					<div class="w3-row b1">
+						<label class="b2" style="margin-top: -10px;">생년월일 입력 : </label>
+						<input class="w3-border it" id="birth" name="mbirth" type="date" placeholder="생년월일 입력">
+					</div>
+					<div class="w3-row b1">    
+						<label class="b2">주소 입력 :</label>
+						<input class="w3-border it" id="addr" name="maddr" type="text" placeholder="주소 입력">
+					</div>
+					<div class="w3-row b1">
+						<label class="b2">연락처 입력  :</label>
+						<input class="w3-border it" id="tel" name="mtel" type="text" placeholder="연락처 입력">
+					</div>
+					<div class="w3-row b1">
+						<label class="b2">이메일 입력 :</label>
+						<input class="w3-border itm" id="mail" name="mail" type="text" placeholder="이메일 입력">
+					</div>
+					<button class="w3-button w3-section w3-center obtn" style="background-color: #e66e63; color: white; width: 95px;" id="join">회원가입</button>
+					<button class="w3-button w3-section w3-ripple obtn" style="background-color:#e66e63; color: white; width: 95px;" id="reset">취소</button>
+				</form>
 			</div>
-			<div class="w3-row b1">
-				<label class="b2">비밀번호 입력 : </label>
-				<input class="w3-border it" id="pw" name="pw" type="password" placeholder="비밀번호 입력">
-			</div>
-			<div class="w3-row b1">
-				<label class="b2" id="repw2">비밀번호  재입력 : </label>
-				<input class="w3-border it" id="repw" name="repw" type="password" placeholder="비밀번호 재입력">
-			</div>
-			<div class="w3-row b1">
-				<label class="b2">이름 입력 : </label>
-				<input class="w3-border it" id="name" name="name" type="text" placeholder="이름 입력">
-			</div>
-			<div class="w3-row b1">
-				<label class="b2" style="margin-top: -10px;">생년월일 입력 : </label>
-				<input class="w3-border it" id="birth" name="birth" type="date" placeholder="생년월일 입력">
-			</div>
-			<div class="w3-row b1">    
-				<label class="b2">주소 입력 :</label>
-				<input class="w3-border it" id="addr" name="addr" type="text" placeholder="주소 입력">
-			</div>
-			<div class="w3-row b1">
-				<label class="b2">연락처 입력  :</label>
-				<input class="w3-border it" id="tel" name="tel" type="text" placeholder="연락처 입력">
-			</div>
-			<div class="w3-row b1">
-				<label class="b2">이메일 입력 :</label>
-				<input class="w3-border itm" id="mail" name="mail" type="text" placeholder="이메일 입력">
-			</div>
-		</form>
-			<button class="w3-button w3-section w3-center obtn" style="background-color: #e66e63; color: white; width: 95px;" id="join">회원가입</button>
-			<button class="w3-button w3-section w3-ripple obtn" style="background-color:#e66e63; color: white; width: 95px;" id="reset">취소</button>
 		</div>
-	</div>
-	<div class="w3-col m3"><p></p></div>
+		<div class="w3-col m3"><p></p></div>
 </body>
 </html>
