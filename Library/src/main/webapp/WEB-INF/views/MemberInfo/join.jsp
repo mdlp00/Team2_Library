@@ -223,7 +223,7 @@
 					<div class="w3-row b1">
 						<label class="b2" style="margin-top: -10px;">생년월일 입력 : </label>
 						<input class="w3-border it" id="birth" name="mbirth" type="date" placeholder="생년월일 입력">
-					</div>
+					</div>   
 					<div class="w3-row b1">    
 						<label class="b2">주소 입력 :</label>
 						<input class="w3-border it" id="addr" name="maddr" type="text" placeholder="주소 입력">

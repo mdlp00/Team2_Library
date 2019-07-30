@@ -38,13 +38,13 @@
 		color: #e66e63;
 	}
 	.box {
-		display: inline-block;
+		display: inline-block;      
 		width: 400px;
 		height: 640px;
 	}
 	.pw_renew {
 		border: none;
-		display: inline-block;
+		display: inline-block;   
 		padding: 4px 8px;
 		overflow: hidden;
 	}

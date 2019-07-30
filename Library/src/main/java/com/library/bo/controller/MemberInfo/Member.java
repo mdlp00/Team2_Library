@@ -55,7 +55,7 @@ public class Member {
 
 	@RequestMapping("/join.bo")
 	public ModelAndView join(HttpSession session, RedirectView rv, ModelAndView mv) {
-		String mid = (String) session.getAttribute("SID");
+		String mid = (String) session.getAttribute("SID");  
 		if (mid == null || mid.length() == 0) {
 			mv.setViewName("MemberInfo/join");
 		} else {
