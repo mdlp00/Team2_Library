@@ -16,6 +16,28 @@
 		</selectKey>
 
 		INSERT INTO
+            notice(n_no, n_title, manager_name)
+        values (
+	        (SELECT NVL(MAX(n_no)+1, 1) FROM notice),
+	        #{n_title},#{manager_name}
+	        )
+
+		</insert>
+		
+		
+		
+		
+	<insert id="NoticeDetail" parameterType="nVO">
+		<selectKey keyProperty="m_name" resultType="String" order="BEFORE">
+		
+		SELECT
+    		 manager_name m_name
+		FROM
+			 manager
+			WHERE manager_name = #{writer}
+		</selectKey>
+
+		INSERT INTO
             notice(n_no, n_title, manager_name, n_body)
         values (
 	        (SELECT NVL(MAX(n_no)+1, 1) FROM notice),
@@ -23,6 +45,7 @@
 	        )
 
 		</insert>
+		
 </mapper>
 
 		

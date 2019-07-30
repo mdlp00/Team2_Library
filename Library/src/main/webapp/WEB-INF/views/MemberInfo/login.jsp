@@ -21,7 +21,7 @@
 
 	html, body {
 		text-align: center;
-		 padding: 50px 200px 200px 25%;
+		 padding: 50px 200px 200px 13%;
 	}
 		
 

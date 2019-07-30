@@ -11,6 +11,7 @@
 	<context:annotation-config />
 		
 	<bean id="studyDAO" class="com.library.bo.dao.StudyRoom.StudyRoomDAO" />
+	<bean id="mDAO" class="com.library.bo.dao.MemberInfo.MemberDAO" />
 <!-- 	<bean id="nDAO" class="com.library.bo.dao.BookInfo." />
 	<bean id="nDAO" class="com.library.bo.dao.BookSearch." />
 	<bean id="nDAO" class="com.library.bo.dao.MemberInfo." />

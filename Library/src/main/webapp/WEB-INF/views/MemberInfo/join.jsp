@@ -76,10 +76,13 @@
 <script type="text/javascript">
 	var idck = false;
 	$(document).ready(function(){
+		
+
 		// 취소 버튼 클릭
 		$('#reset').click(function(){
-			$(location).attr('href', 'welcome.jsp');
+			$(location).attr('href', '../Etc/main.bo');
 		});
+		
 		
 		$('pw').focusout(function(){
 			var spw = $('#pw').val();

@@ -13,11 +13,13 @@
 	<!-- 타입 별칭 설정 부분  -->
 	<typeAliases>
 		<typeAlias alias="studyVO" type="com.library.bo.vo.StudyRoom.StudyRoomVO" />
+		<typeAlias alias="mVO" type="com.library.bo.vo.MemberInfo.MemberVO" />
 	</typeAliases>
 	
 	<!-- sql 파일 읽어 오는 부분 -->
 	<mappers>
 		<mapper resource="com/library/bo/sql/StudyRoom/StudyRoomSQL.xml" />
+		<mapper resource="com/library/bo/sql/MemberInfo/MemberSQL.xml" />
 	</mappers>
 	
 </configuration>
