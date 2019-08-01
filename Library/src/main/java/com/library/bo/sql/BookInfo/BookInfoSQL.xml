@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 
+ * 
+ * @author	강찬규
+ * @since	2019.07.30
+ * @version	1.0
+ * @see
+ * 			변경 이력 관리
+ * 			2019.07.30		BookInfoSQL.xml 제작		작성자 : 강찬규
+ * 			2019.07.30		cntRent 제작				작성자 : 강찬규
+ * 			2019.07.30		cntReturn 제작				작성자 : 강찬규
+ * 			2019.07.30		selRentList 제작			작성자 : 강찬규
+ * 			2019.07.30		selReturnOk 제작			작성자 : 강찬규
+ * 			2019.07.30		selReturnDate 제작			작성자 : 강찬규
+ * 			2019.07.31		selReserveList 제작			작성자 : 강찬규
+ * 			2019.07.31		selReserveId 제작			작성자 : 강찬규
+ * 			2019.07.31		cancelReserveBook 제작		작성자 : 강찬규
+ *
+ -->
+<mapper namespace="bifSQL">
+<!-- SELECT -->
+	<!-- 대출 권수 확인하는 질의명령 -->
+	<select id="cntRent" resultType="int" parameterType="String">
+		SELECT
+			count(*)
+		FROM
+			rent
+		WHERE
+			m_no = (SELECT m_no FROM member WHERE m_id = #{id})
+	</select>
+	<!-- 반납 권수 확인하는 질의명령 -->
+	<select id="cntReturn" resultType="int" parameterType="String">
+		SELECT
+			count(*)
+		FROM
+			return
+		WHERE
+			m_no = (SELECT m_no FROM member WHERE m_id = #{id})
+	</select>
+	<!-- 회원이 대출목록 가져오는 질의명령 -->
+	<select id="selRentList" resultType="brVO" parameterType="String">
+		SELECT
+			rent_no rno, to_char(rent_date, 'YYYY/MM/DD HH24:MM') rentDate, rent_extend extended, b.b_name bookName, m.m_no rMno
+		FROM
+			rent r, member m, book b
+		WHERE
+			m_isshow = 'Y'
+			AND m.m_id = #{id}
+			AND m.m_no = r.m_no
+			AND r.b_no = b.b_no
+		ORDER BY
+			rno
+	</select>
+	<!-- 반납 여부 확인하는 질의명령 -->
+	<select id="selReturnOk" resultType="int" parameterType="int">
+		SELECT
+			count(*) cnt
+		FROM
+			return
+		WHERE
+			rent_no = #{rno}
+	</select>
+	<!--  반납 날짜 가져오는 질의명령 -->
+	<select id="selReturnDate" resultType="String" parameterType="int">
+		SELECT
+			to_char(return_date, 'YYYY/MM/DD HH24:MI') returnDate
+		FROM
+			return
+		WHERE
+			rent_no = #{rno}
+	</select>
+	<!-- 도서 예약목록 가져오는 질의명령 -->
+	<select id="selReserveList" resultType="reserveVO" parameterType="String">
+		SELECT
+			reserve_no rno, b_name bookName, to_char(reserve_date, 'YYYY/MM/DD HH24:MM') reserveDate
+		FROM
+			reservation_book r, member m, book b
+		WHERE
+			m_isshow = 'Y'
+			AND reserve_isshow = 'Y'
+			AND r.m_no = m.m_no
+			AND r.b_no = b.b_no
+			ANd m_id = #{id}
+		ORDER BY
+			reserve_no
+	</select>
+	<!-- 예약 명단 가져오는 질의명령 -->
+	<select id="selReserveId" resultType="String" parameterType="String">
+ 		SELECT
+			m_id
+		FROM
+			reservation_book r, member m
+		WHERE
+			reserve_isshow = 'Y'
+			AND r.m_no = m.m_no
+			AND b_no = (SELECT b_no FROM book WHERE b_name = #{bookName})
+	</select>
+<!-- UPDATE -->
+	<!-- 책 예약 취소하는 질의명령 -->
+	<update id="cancelReserveBook" parameterType="int">
+	UPDATE
+		reservation_book
+	SET
+		reserve_isshow = 'N'
+	WHERE
+		reserve_no = #{rno}
+	</update>
+</mapper>

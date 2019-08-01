@@ -11,5 +11,6 @@
 	<context:annotation-config />
 
 	<bean id="studyService" class="com.library.bo.service.StudyRoom.StudyRoomService" />
+	<bean id="bifService" class="com.library.bo.service.BookInfo.BookInfoService" />
 	
 </beans>
