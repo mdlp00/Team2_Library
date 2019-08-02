@@ -10,6 +10,7 @@
  * 			2019.07.23		StudyRoomSQL.xml 제작		작성자 : 강찬규
  * 			2019.07.23		selDate 제작				작성자 : 강찬규
  * 			2019.07.23		reserveDate 제작			작성자 : 강찬규
+ * 			2019.08.01		reserveDate 수정			작성자 : 강찬규
  *
  -->
 <mapper namespace="studySQL">
@@ -35,10 +36,11 @@
 <!-- INSERT -->
 	<!-- 예약하기 -->
 	<insert id="reserveDate" parameterType="studyVO">
+	<selectKey keyProperty="sno" resultType="int" order="BEFORE">SELECT m_no FROM member WHERE m_id = #{sid}</selectKey>
 		INSERT INTO
-			room(room_no, room_code, start_date, end_date)
+			room(room_no, room_code, start_date, end_date, m_no)
 		VALUES(
-			(SELECT NVL(MAX(room_no)+1, 100001) FROM room), #{roomCode}, #{sDate}, #{eDate}
+			(SELECT NVL(MAX(room_no)+1, 100001) FROM room), #{roomCode}, #{sDate}, #{eDate}, #{sno}
 		)
 	</insert>
 

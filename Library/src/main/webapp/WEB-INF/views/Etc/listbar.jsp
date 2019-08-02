@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,61 +9,72 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/assets/css/main.css" />
 <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/resources/assets/css/w3.css" />
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/assets/js/jquery-3.4.1.min.js"></script>
-   <!-- Scripts -->
-         <script src="${pageContext.request.contextPath}/resources/assets/js/jquery.min.js"></script>
-         <script src="${pageContext.request.contextPath}/resources/assets/js/jquery.scrolly.min.js"></script>
-         <script src="${pageContext.request.contextPath}/resources/assets/js/skel.min.js"></script>
-         <script src="${pageContext.request.contextPath}/resources/assets/js/util.js"></script>
-         <script src="${pageContext.request.contextPath}/resources/assets/js/main.js"></script>
+	<!-- Scripts -->
+	<script src="${pageContext.request.contextPath}/resources/assets/js/jquery.min.js"></script>
+	<script src="${pageContext.request.contextPath}/resources/assets/js/jquery.scrolly.min.js"></script>
+	<script src="${pageContext.request.contextPath}/resources/assets/js/skel.min.js"></script>
+	<script src="${pageContext.request.contextPath}/resources/assets/js/util.js"></script>
+	<script src="${pageContext.request.contextPath}/resources/assets/js/main.js"></script>
          
 <style type="text/css">
-
-   .btn{
-      color: white;
-      text-decoration:none;
-   }
-   
-   .btn1{
-   
-   font-size:1.7em;
-   font-weight: bold;
-   
-   }
+	.btn {
+		color: white;
+		text-decoration:none;
+	}
+	.btn1 {
+		font-size:1.7em;
+		font-weight: bold;
+	}
 </style>
-
 <script type="text/javascript">
-	$(document).ready(function() {
-		
-		//[1] 기본값 설정
-		// 자료검색 버튼
-		$(".search1").hide(); //하단
-		$("#search").click(function() {
-			$(".search1").toggle();
-		});
-		// 열린공간 버튼
-		$(".b1").hide(); //하단
-		$("#a1").click(function() {
-			$(".b1").toggle();
-		});
-		$(".c1").hide(); //하단
-		$("#bb1").click(function() {
-			$(".c1").toggle();
-		});
-	  	 // 도서관 안내 버튼
-		$(".b2").hide(); //하단
-		$("#a2").click(function() {
-			$(".b2").toggle();
-		});
-		$(".c2").hide();
-		$("#bb2").click(function() {
-			$(".c2").toggle();
-		});
-		// 마이라이브러리
-		$(".b3").hide(); //하단
-		$("#a3").click(function() {
-			$(".b3").toggle();
-		});
+$(document).ready(function() {
+	//[1] 기본값 설정
+	// 자료검색 버튼
+	$(".search1").hide(); //하단
+	$("#search").click(function() {
+		$(".search1").toggle();
 	});
+	// 열린공간 버튼
+	$(".b1").hide(); //하단
+	$("#a1").click(function() {
+		$(".b1").toggle();
+	});
+	$(".c1").hide(); //하단
+	$("#bb1").click(function() {
+		$(".c1").toggle();
+	});
+  	 // 도서관 안내 버튼
+	$(".b2").hide(); //하단
+	$("#a2").click(function() {
+		$(".b2").toggle();
+	});
+	$(".c2").hide();
+	$("#bb2").click(function() {
+		$(".c2").toggle();
+	});
+	// 마이라이브러리
+	$(".b3").hide(); //하단
+	$("#a3").click(function() {
+		$(".b3").toggle();
+	});
+	
+	// [2] 로그인 처리
+	var sid = '${SID}';
+	// 로그인 상태시 변화
+	if(sid){
+		$('#lin').html('Log Out');
+		$('#lin').attr('id', 'lout');
+	}
+	// 로그인 버튼 클릭시
+	$('#lin').click(function(){
+		$(location).attr('href', '${pageContext.request.contextPath}/MemberInfo/login.bo');
+	});
+	// 로그아웃 버튼 클릭시
+	$('#lout').click(function(){
+		alert('로그아웃 되었습니다.');
+		$(location).attr('href', '${pageContext.request.contextPath}/MemberInfo/logoutProc.bo' );
+	});
+});
 </script>
 </head>
 <body class="subpage">
@@ -74,7 +85,10 @@
 		</nav>
 		<a href="${pageContext.request.contextPath}/study/goMain.bo" class="logo">Daye Library</a>
 		<nav class="right">
-			<a href="/bo/img/MainL.jpg" class="button alt">Log in</a>
+			<c:if test="${not empty SID}">
+				<h4 style='display:inline'>${SID} 님</h4>
+			</c:if>
+			<a class="button alt" id="lin">Log In</a>
 		</nav>
 	</header>
 

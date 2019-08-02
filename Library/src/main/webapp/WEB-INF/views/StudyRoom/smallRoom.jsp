@@ -21,7 +21,7 @@
 		overflow: visible;
 	}
 	body {font-family: "Times New Roman", Georgia, Serif; background-color: #f6f6f6;}
-	h1, h2, h3, h4, h5, h6 {
+	h1 {
 	  font-family: "Playfair Display";
 	  letter-spacing: 5px;
 	}
@@ -140,36 +140,6 @@
 </style>
 <script type="text/javascript">
 	$(document).ready(function() {
-		// [1] 기본값 설정
-		// 자료검색 버튼
-		$('.search1').hide(); //하단
-		$('#search').click(function() {
-			$('.search1').toggle();
-		});
-		// 열린공간 버튼
-		$('.b1').hide(); //하단
-		$('#a1').click(function() {
-			$('.b1').toggle();
-		});
-		$('.c1').hide(); //하단
-		$('#bb1').click(function() {
-			$('.c1').toggle();
-		});
-		// 도서관 안내 버튼
-		$('.b2').hide(); //하단
-		$('#a2').click(function() {
-			$('.b2').toggle();
-		});
-		$('.c2').hide();
-		$('#bb2').click(function() {
-			$('.c2').toggle();
-		});
-		// 마이라이브러리
-		$('.b3').hide(); //하단
-		$('#a3').click(function() {
-			$('.b3').toggle();
-		});
-		
 		// [2] 예약 설정
 		// 날짜 선택 창 띄우기
 		$('#reserve').click(function(){
@@ -230,212 +200,159 @@
 		});
 		// 예약하기 버튼 클릭 시
 		$('#reserve_button').click(function(){
+			var sid = '${SID}';
+			if(!sid) {
+				alert('로그인을 한 후에 사용 가능한 서비스입니다.');
+				return;
+			}
+			
 			$('#frm').submit();
 		});
 	});
 </script>
 </head>
 <body>
-<!-- Header -->
-<header id="header">
-	<nav class="left">
-		<a href="#menu"><span>Menu</span></a>
-	</nav>
-	<a href="goMain.bo" class="logo">Daye Library</a>
-	<nav class="right">
-		<a href="#" class="button alt">Log in</a>
-	</nav>
-</header>
-
-<!-- Menu -->
-<nav id="menu">
-	<ul class="links">
-		<li><a href="goMain.bo" class="btn1">메인페이지</a></li>
-		<li><a href="#" class="btn1" id="search" >자료검색</a>
-		<div class="subMenu">
-			<ul>
-				<li class="search1"><a href="#" class="w3-button btn">주제별 자료검색</a></li>
-				<li class="search1"><a href="#" class="w3-button btn">희망도서신청</a></li>
-				<li class="search1"><a href="#" class="w3-button btn">대출 베스트</a></li>
-			</ul>
+	<!-- Header -->
+	<jsp:include page="../Etc/listbar.jsp" />
+	<!-- Page content -->
+	<div class="w3-content" style="max-width:1100px; margin-top: 10px; padding-bottom: 1000px;">
+		<!-- 상단 사진 -->
+		<div class="w3-row" style="height: 500px;">
+			<img class="w3-img" src="../resources/img/studyS_1.jpg" style="height: 100%; width: 100%;">
 		</div>
-		<li><a href="#" class="btn1" id="a1">열린공간</a>
-			<ul>
-				<li class="b1"><a href="#" class="w3-button btn">공지사항</a></li>
-				<li class="b1"><a href="#" class="w3-button btn">자주하는 질문</a></li>
-				<li class="b1" id="bb1"><a href="#" class="w3-button btn">좌석예약</a>
-					<ul>
-						<li class="c1"><a href="#" class="w3-button btn">좌석예약</a></li>
-						<li class="c1"><a href="#" class="w3-button btn">디지털 자료실 좌석예약</a></li>
-						<li class="c1"><a href="#" class="w3-button btn">열람실좌석 예약현황</a></li>
-					</ul>
-				</li>
-			</ul>
-		</li>
-		<li><a href="#" class="btn1" id="a2">도서관안내</a></li>
-		<ul>
-			<li class="b2"><a href="#" class="w3-button btn">도서관현황</a></li>
-			<li class="b2" id="bb2"><a href="#" class="w3-button btn">이용안내</a></li>
-		 	<ul>
-				<li class="c2"><a href="#" class="w3-button btn">이용시간 및 휴관일</a></li>
-				<li class="c2"><a href="#" class="w3-button btn">회원가입 안내</a></li>
-				<li class="c2"><a href="#" class="w3-button btn">시설이용 안내</a></li>
-				<li class="c2"><a href="#" class="w3-button btn">자료이용 안내</a></li>
-				<li class="c2"><a href="#" class="w3-button btn">오시는길</a></li>
-			</ul>
-		</ul>
-		<li><a href="#" class="btn1" id="a3">마이라이브러리</a></li>
-		<ul>
-	 		<li class="b3"><a href="#" class="w3-button btn">내서재</a></li>
-			<li class="b3"><a href="#" class="w3-button btn">대출조회 및 연기</a></li>
-			<li class="b3"><a href="#" class="w3-button btn">대출예약확인 및 취소</a></li>
-			<li class="b3"><a href="#" class="w3-button btn">회원정보</a></li>
-		</ul>
-	</ul>
-	<ul class="actions vertical">
-		<li><a href="#" class="button fit">Login</a></li>
-	</ul>
-</nav>
-		
-		
-<!-- Page content -->
-<div class="w3-content" style="max-width:1100px; margin-top: 10px; padding-bottom: 1000px;">
-	<!-- 상단 사진 -->
-	<div class="w3-row" style="height: 500px;">
-		<img class="w3-img" src="../resources/img/studyS_1.jpg" style="height: 100%; width: 100%;">
-	</div>
-	<!-- 소제목 -->
-	<div class="w3-row w3-center" style="margin: 20px 0px 70px;">
-		<div style="display: inline-block; width: 500px;">
-			<h1 style="margin-bottom: 10px;">D.L. the Small Room</h1>
-			<p style="color: gray;">3명 ~ 4명 정도의 사람들이 넉넉하고 아늑하게 사용할 수 있는 공간</p>
-		</div>
-	</div>
-	<!-- 스터디룸 소개 -->
-	<div class="w3-row" id="about">
-		<!-- 소개글 부분 -->
-		<div class="w3-col m9" style="height: 600px;">
-			<div class="ttl">
-				<div>
-					<img class="w3-img read" src="../resources/img/studyS_2.jpg">
-				</div>
-				<div class="SSul">
-					<h1 class="w3-xxlarge ssul"><b>the Small Room<br>작은방</b></h1>
-					<div style="background-color: #f6755e; width: 20px; height: 4px; margin-bottom: 15px;"></div>
-					<p class="ssul ftnbg" style="color: black;">이 곳은 Daye Library가 자랑하는 지성과 토론의 공간<br> <strong>작은방</strong> 입니다.</p>
-					<div style="height: 20px;"><p></p></div>
-					<p>공간 내 무료로 제공되는 coffee, tea가 있습니다.<br>스터디 및 회의하기에 조용하고 쾌적한 공간입니다.</p>
-					<div style="height: 10px;"><p></p></div>
-					<p style="margin-bottom: 5px;"><strong class="ftnbg murry">이용 시간</strong></p>
-					<div class="small_bar"></div>
-					<ul>
-						<li class="li_bt"><span class="ftnbg">오전 9시부터 오후 5시 까지</span></li>
-					</ul>
-					<div style="height: 20px;"><p></p></div>
-					<p style="margin-bottom: 5px;"><strong class="ftnbg murry">시설 안내</strong></p>
-					<div class="small_bar"></div>
-					<ol>
-						<li class="li_bt"><span class="ftnbg">무료 에디오피아 산 원두커피, Tea</span></li>
-						<li class="li_bt"><span class="ftnbg">초고속 5G Wifi</span></li>
-						<li class="li_bt"><span class="ftnbg">냉난방기</span></li>
-						<li class="li_bt"><span class="ftnbg">충분한 콘센트 (인당 평균 3개)</span></li>
-						<li class="li_bt"><span class="ftnbg">얼음 정수기</span></li>
-					</ol>
-					<div style="height: 20px;"><p></p></div>
-					<p style="margin-bottom: 5px;"><strong class="ftnbg murry">예약시 주의 사항</strong></p>
-					<div class="small_bar"></div>
-					<ul>
-						<li class="li_bt"><span class="ftnbg">입실, 퇴실 시간을 준수해주세요</span></li>
-						<li class="li_bt"><span class="ftnbg">다음 사용자를 위해, 퇴실 5분전 가벼운 뒷정리를 해주세요</span></li>
-						<li class="li_bt"><span class="ftnbg">사용 후 다음 사용자가 없다면 불을 꺼주세요</span></li>
-						<li class="li_bt"><span class="ftnbg">음식물은 도서관 내 카페테리아를 이용해주세요</span></li>
-					</ul>
-					<div style="height: 20px;"><p></p></div>
-					<p style="margin-bottom: 5px;"><strong class="ftnbg murry">환불 규정 안내</strong></p>
-					<div class="small_bar"></div>
-					<ul>
-						<li class="li_bt"><span class="ftnbg">이용 7일 전</span><span class="ftnbg co101">총 금액의 100% 환불</span></li>
-						<li class="li_bt"><span class="ftnbg">이용 3일 전</span><span class="ftnbg co101">총 금액의 50% 환불</span></li>
-						<li class="li_bt"><span class="ftnbg">이용 1일 전</span><span class="ftnbg co101">총 금액의 10% 환불</span></li>
-						<li class="li_bt"><span class="ftnbg">이용 당일</span><span class="ftnbg co101">환불 불가</span></li>
-					</ul>
-				</div>
+		<!-- 소제목 -->
+		<div class="w3-row w3-center" style="margin: 20px 0px 70px;">
+			<div style="display: inline-block; width: 500px;">
+				<h1 style="margin-bottom: 10px;">D.L. the Small Room</h1>
+				<p style="color: gray;">3명 ~ 4명 정도의 사람들이 넉넉하고 아늑하게 사용할 수 있는 공간</p>
 			</div>
 		</div>
-		<!-- 캘린더 및 예약 부분 -->
-		<div class="w3-col m3">
-			<div class="w3-content w3-padding cal_ttl">
-				<div class="w3-row ftnbg">
-					<p id="small-header">작 은 방</p>
-					<ul id="small-neck">
-						<li class="li_border"><span class="spam">예약 시간 :</span><span>1시간 단위</span></li>
-						<li class="li_border"><span class="spam">예약 인원 :</span><span>최소 2명 ~ 최대 4명</span></li>
-					</ul>
-					<div class="li_border">
-						<div style="height: 40px;">
-							<img class="icon_img" src="../resources/img/icon/desk_chair.jpg">
-							<span class="icon_nae">의자 / 테이블</span>
-						</div>
-						<div style="height: 40px;">
-							<img class="icon_img" src="../resources/img/icon/wifi.JPG">
-							<span class="icon_nae">인터넷 / Wifi</span>
-						</div>
-						<div style="height: 40px;">
-							<img class="icon_img" src="../resources/img/icon/toilet.JPG">
-							<span class="icon_nae">내부 화장실</span>
-						</div>
-						<div style="height: 40px;">
-							<img class="icon_img" src="../resources/img/icon/noSmoking.jpg">
-							<span class="icon_nae">금연</span>
-						</div>
+		<!-- 스터디룸 소개 -->
+		<div class="w3-row" id="about">
+			<!-- 소개글 부분 -->
+			<div class="w3-col m9" style="height: 600px;">
+				<div class="ttl">
+					<div>
+						<img class="w3-img read" src="../resources/img/studyS_2.jpg">
 					</div>
-					<div class="li_border"><p style="margin: 0px;"></p></div>
+					<div class="SSul">
+						<h1 class="w3-xxlarge ssul"><b>the Small Room<br>작은방</b></h1>
+						<div style="background-color: #f6755e; width: 20px; height: 4px; margin-bottom: 15px;"></div>
+						<p class="ssul ftnbg" style="color: black;">이 곳은 Daye Library가 자랑하는 지성과 토론의 공간<br> <strong>작은방</strong> 입니다.</p>
+						<div style="height: 20px;"><p></p></div>
+						<p>공간 내 무료로 제공되는 coffee, tea가 있습니다.<br>스터디 및 회의하기에 조용하고 쾌적한 공간입니다.</p>
+						<div style="height: 10px;"><p></p></div>
+						<p style="margin-bottom: 5px;"><strong class="ftnbg murry">이용 시간</strong></p>
+						<div class="small_bar"></div>
+						<ul>
+							<li class="li_bt"><span class="ftnbg">오전 9시부터 오후 5시 까지</span></li>
+						</ul>
+						<div style="height: 20px;"><p></p></div>
+						<p style="margin-bottom: 5px;"><strong class="ftnbg murry">시설 안내</strong></p>
+						<div class="small_bar"></div>
+						<ol>
+							<li class="li_bt"><span class="ftnbg">무료 에디오피아 산 원두커피, Tea</span></li>
+							<li class="li_bt"><span class="ftnbg">초고속 5G Wifi</span></li>
+							<li class="li_bt"><span class="ftnbg">냉난방기</span></li>
+							<li class="li_bt"><span class="ftnbg">충분한 콘센트 (인당 평균 3개)</span></li>
+							<li class="li_bt"><span class="ftnbg">얼음 정수기</span></li>
+						</ol>
+						<div style="height: 20px;"><p></p></div>
+						<p style="margin-bottom: 5px;"><strong class="ftnbg murry">예약시 주의 사항</strong></p>
+						<div class="small_bar"></div>
+						<ul>
+							<li class="li_bt"><span class="ftnbg">입실, 퇴실 시간을 준수해주세요</span></li>
+							<li class="li_bt"><span class="ftnbg">다음 사용자를 위해, 퇴실 5분전 가벼운 뒷정리를 해주세요</span></li>
+							<li class="li_bt"><span class="ftnbg">사용 후 다음 사용자가 없다면 불을 꺼주세요</span></li>
+							<li class="li_bt"><span class="ftnbg">음식물은 도서관 내 카페테리아를 이용해주세요</span></li>
+						</ul>
+						<div style="height: 20px;"><p></p></div>
+						<p style="margin-bottom: 5px;"><strong class="ftnbg murry">환불 규정 안내</strong></p>
+						<div class="small_bar"></div>
+						<ul>
+							<li class="li_bt"><span class="ftnbg">이용 7일 전</span><span class="ftnbg co101">총 금액의 100% 환불</span></li>
+							<li class="li_bt"><span class="ftnbg">이용 3일 전</span><span class="ftnbg co101">총 금액의 50% 환불</span></li>
+							<li class="li_bt"><span class="ftnbg">이용 1일 전</span><span class="ftnbg co101">총 금액의 10% 환불</span></li>
+							<li class="li_bt"><span class="ftnbg">이용 당일</span><span class="ftnbg co101">환불 불가</span></li>
+						</ul>
+					</div>
 				</div>
-				<div class="w3-row">
-					<div class="w3-padding w3-center ftnbg" id="reserve" style="background-color: #f6755e; color: white;">시간 단위 예약하기</div>
-				</div>
-				<div class="w3-row w3-margin-top w3-margin-bottom" id="reserveForm" style="display: none;">
-					<select class="w3-center ftnbg" name="sel_day" id="sel_day" style="background-color: white;">
-						<option>예약 가능한 날짜 선택</option>
-						<c:forEach var="data" items="${DATE}">
-							<option class="w3-center" value="${data}">${data}</option>
-						</c:forEach>
-					</select>
-					<div class="w3-row w3-margin-top" id="times" style="display: none;">
-						<!-- form -->
-						<form method="POST" action="reserveDate.bo" id="frm" name="frm">
-							<input type="hidden" id="roomCode" name="roomCode" value="1">
-							<input type="hidden" id="startDate" name="startDate">
-							<div class="times_wrap">
-								<input type="button" class="times_time" id="t9" value="09:00">
-								<input type="checkbox" name="startTime" value="09">
-								<input type="button" class="times_time" id="t10" value="10:00">
-								<input type="checkbox" name="startTime" value="10">
-								<input type="button" class="times_time" id="t11" value="11:00">
-								<input type="checkbox" name="startTime" value="11">
-								<input type="button" class="times_time" id="t12" value="12:00">
-								<input type="checkbox" name="startTime" value="12">
-								<input type="button" class="times_time" id="t13" value="1:00">
-								<input type="checkbox" name="startTime" value="13">
-								<input type="button" class="times_time" id="t14" value="2:00">
-								<input type="checkbox" name="startTime" value="14">
-								<input type="button" class="times_time" id="t15" value="3:00">
-								<input type="checkbox" name="startTime" value="15">
-								<input type="button" class="times_time" id="t16" value="4:00">
-								<input type="checkbox" name="startTime" value="16">
-								<input type="button" class="times_time" id="t17" value="5:00">
-								<input type="checkbox" name="startTime" value="17">
+			</div>
+			<!-- 캘린더 및 예약 부분 -->
+			<div class="w3-col m3">
+				<div class="w3-content w3-padding cal_ttl">
+					<div class="w3-row ftnbg">
+						<p id="small-header">작 은 방</p>
+						<ul id="small-neck">
+							<li class="li_border"><span class="spam">예약 시간 :</span><span>1시간 단위</span></li>
+							<li class="li_border"><span class="spam">예약 인원 :</span><span>최소 2명 ~ 최대 4명</span></li>
+						</ul>
+						<div class="li_border">
+							<div style="height: 40px;">
+								<img class="icon_img" src="../resources/img/icon/desk_chair.jpg">
+								<span class="icon_nae">의자 / 테이블</span>
 							</div>
-						</form>
-						<div class="w3-row" style="border-top: 1px soild #ebebeb; padding-top: 15px; display: none;" id="reserve_button">
-							<div class="w3-col w3-button w3-center w3-orange ftnbg">예약 하기</div>
+							<div style="height: 40px;">
+								<img class="icon_img" src="../resources/img/icon/wifi.JPG">
+								<span class="icon_nae">인터넷 / Wifi</span>
+							</div>
+							<div style="height: 40px;">
+								<img class="icon_img" src="../resources/img/icon/toilet.JPG">
+								<span class="icon_nae">내부 화장실</span>
+							</div>
+							<div style="height: 40px;">
+								<img class="icon_img" src="../resources/img/icon/noSmoking.jpg">
+								<span class="icon_nae">금연</span>
+							</div>
+						</div>
+						<div class="li_border"><p style="margin: 0px;"></p></div>
+					</div>
+					<div class="w3-row">
+						<div class="w3-padding w3-center ftnbg" id="reserve" style="background-color: #f6755e; color: white;">시간 단위 예약하기</div>
+					</div>
+					<div class="w3-row w3-margin-top w3-margin-bottom" id="reserveForm" style="display: none;">
+						<select class="w3-center ftnbg" name="sel_day" id="sel_day" style="background-color: white;">
+							<option>예약 가능한 날짜 선택</option>
+							<c:forEach var="data" items="${DATE}">
+								<option class="w3-center" value="${data}">${data}</option>
+							</c:forEach>
+						</select>
+						<div class="w3-row w3-margin-top" id="times" style="display: none;">
+							<!-- form -->
+							<form method="POST" action="reserveDate.bo" id="frm" name="frm">
+								<input type="hidden" id="roomCode" name="roomCode" value="1">
+								<input type="hidden" id="startDate" name="startDate">
+								<div class="times_wrap">
+									<input type="button" class="times_time" id="t9" value="09:00">
+									<input type="checkbox" name="startTime" value="09">
+									<input type="button" class="times_time" id="t10" value="10:00">
+									<input type="checkbox" name="startTime" value="10">
+									<input type="button" class="times_time" id="t11" value="11:00">
+									<input type="checkbox" name="startTime" value="11">
+									<input type="button" class="times_time" id="t12" value="12:00">
+									<input type="checkbox" name="startTime" value="12">
+									<input type="button" class="times_time" id="t13" value="1:00">
+									<input type="checkbox" name="startTime" value="13">
+									<input type="button" class="times_time" id="t14" value="2:00">
+									<input type="checkbox" name="startTime" value="14">
+									<input type="button" class="times_time" id="t15" value="3:00">
+									<input type="checkbox" name="startTime" value="15">
+									<input type="button" class="times_time" id="t16" value="4:00">
+									<input type="checkbox" name="startTime" value="16">
+									<input type="button" class="times_time" id="t17" value="5:00">
+									<input type="checkbox" name="startTime" value="17">
+								</div>
+							</form>
+							<div class="w3-row" style="border-top: 1px soild #ebebeb; padding-top: 15px; display: none;" id="reserve_button">
+								<div class="w3-col w3-button w3-center w3-orange ftnbg">예약 하기</div>
+							</div>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-</div>
-<jsp:include page="../Etc/footer.jsp" />
+	<!-- Footer -->
+	<jsp:include page="../Etc/footer.jsp" />
 </body>
 </html>

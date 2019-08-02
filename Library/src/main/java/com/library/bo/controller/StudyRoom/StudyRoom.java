@@ -16,7 +16,6 @@ package com.library.bo.controller.StudyRoom;
  * 			2019.07.26		goMedium 함수 제작			작성자 : 강찬규
  * 			2019.07.26		goBig 함수 제작				작성자 : 강찬규
  */
-import java.text.*;
 import java.util.*;
 import javax.servlet.http.*;
 
@@ -24,7 +23,6 @@ import org.springframework.beans.factory.annotation.*;
 import org.springframework.stereotype.*;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.*;
-import org.springframework.web.servlet.view.*;
 
 import com.library.bo.dao.StudyRoom.StudyRoomDAO;
 import com.library.bo.service.StudyRoom.StudyRoomService;
@@ -40,9 +38,8 @@ public class StudyRoom {
 	
 	// 메인 페이지 불러오는 함수
 	@RequestMapping("goMain.bo")
-	public ModelAndView goMain(ModelAndView mv, RedirectView rv) {
-		rv.setUrl("../");
-		mv.setView(rv);
+	public ModelAndView goMain(ModelAndView mv) {
+		mv.setViewName("redirect:../");
 		return mv;
 	}
 	
@@ -79,11 +76,13 @@ public class StudyRoom {
 		
 	// 예약 처리 함수
 	@RequestMapping("/reserveDate.bo")
-	public ModelAndView reserveDate(ModelAndView mv, HttpServletRequest req, StudyRoomVO vo, RedirectView rv) {
+	public ModelAndView reserveDate(ModelAndView mv, HttpServletRequest req, HttpSession session, StudyRoomVO vo) {
 		// 넘겨진 데이터 받기
 		String rC = req.getParameter("roomCode");
 		String rDate = req.getParameter("startDate");
 		String[] days = req.getParameterValues("startTime");
+		String sid = (String)session.getAttribute("SID");
+		
 		int size = days.length;
 		// 데이터 vo에 맞게 변환
 		int en = Integer.parseInt(days[size-1]);
@@ -96,6 +95,7 @@ public class StudyRoom {
 		vo.setrDate(rDate);
 		vo.setStartTime(startTime);
 		vo.setEndTime(endTime);
+		vo.setSid(sid);
 		vo.setsDate();
 		vo.seteDate();
 		
@@ -103,8 +103,7 @@ public class StudyRoom {
 		int cnt = studyDAO.reserveDate(vo);
 		// 작업 결과 확인해서 뷰 부르기
 		if(cnt == 1) {
-			rv.setUrl("goStudy.bo");
-			mv.setView(rv);
+			mv.setViewName("redirect:goStudy.ti");
 		} else {
 			if(roomCode == 1) {
 				mv.setViewName("StudyRoom/smallRoom");

@@ -12,6 +12,8 @@ import java.util.*;
 public class StudyRoomVO {
 	private int roomNo;			// 예약번호
 	private int roomCode;		// 방번호
+	private String sid;			// 예약한 사람 아이디
+	private int sno;			// 예약한 사람 회원 번호
 	private String rDate;		// 선택 날짜
 	private String startTime;	// 시작 시간
 	private String endTime;		// 종료 시간
@@ -74,6 +76,18 @@ public class StudyRoomVO {
 	}
 	public void setList(List<StudyRoomVO> list) {
 		this.list = list;
+	}
+	public String getSid() {
+		return sid;
+	}
+	public void setSid(String sid) {
+		this.sid = sid;
+	}
+	public int getSno() {
+		return sno;
+	}
+	public void setSno(int sno) {
+		this.sno = sno;
 	}
 	
 }
