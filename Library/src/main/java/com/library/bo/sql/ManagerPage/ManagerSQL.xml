@@ -1,28 +1,93 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper
 	PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 			"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+			
+<!-- 
+ * 
+ * @author	안다예
+ * @since	2019.00.00
+ * @version	1.0
+ * @see
+ * 			변경 이력 관리
+ * 			2019.00.00		ManagerSQL.xml 제작			작성자 : 안다예
+ * 			2019.00.00		managerLogin 제작				작성자 : 안다예
+ * 			2019.00.00		selReserveList 제작			작성자 : 양희준
+ * 			2019.00.00		rentBtn 제작					작성자 : 양희준
+ * 			2019.00.00		rentAdd 제작					작성자 : 양희준
+ * 			2019.00.00		rentView 제작					작성자 : 양희준
+ * 			2019.00.00		returnBtn 제작				작성자 : 양희준
+ * 			2019.00.00		rentBtn 제작					작성자 : 양희준
+ *
+ -->
+ 
 <mapper namespace="manaSQL">
 
+	<!-- 로그인 확인 --> 
 	<select id="managerLogin" resultType="int" parameterType="manaVO">
 	SELECT
-			count(*) cnt   
-	FROM   
+			count(*) cnt
+	FROM
 			Manager
-	WHERE   
-			manager_id = #{mnid}
-            AND manager_pw = #{mnpw}         
+	WHERE
+			manager_id = #{id}
+            AND manager_pw = #{pw}         
    </select>
    
-   <insert id="NoticeInsert" parameterType="nVO">
-   insert into 
-    Notice
-   		(n_no,N_TITLE,MANAGER_NAME,N_BODY) 
-	values(
-	(Select NVL(Max(n_no) +1, 1) From notice), 
-	#{title},'manager01',#{body})
-
-   </insert>
-         
+   	<!-- 도서 예약목록 가져오는 질의명령 -->
+	<select id="selReserveList" resultType="ManagerReserveVO">
+		SELECT
+			reserve_no, m_id, m.m_name, b_name, to_char(reserve_date, 'YYYY/MM/DD HH24:MM') reserve_date, m.m_no m_no, b.b_no b_no
+		FROM
+			reservation_book r, member m, book b
+		WHERE
+			m_isshow = 'Y'
+			AND reserve_isshow = 'Y'
+			AND r.m_no = m.m_no
+			AND r.b_no = b.b_no
+		ORDER BY
+			reserve_date, b_name
+	</select>
+   
+   
+   	<!-- 도서 대여 승낙 질의 명령 -->
+	<update id="rentBtn" parameterType="int">
+		UPDATE reservation_book SET reserve_isshow = 'N'
+		WHERE reserve_no = #{reserve_no}
+	</update>
+   	
+   	<!-- 대여 리스트 추가 명령-->
+   	<insert id="rentAdd" parameterType="ManagerReserveVO">
+		INSERT INTO RENT(RENT_NO,M_NO,B_NO)
+		VALUES((SELECT NVL(MAX(RENT_NO),0)+1 FROM RENT),#{m_no},#{b_no})
+   	</insert>
+   	
+   	<!-- 대여 리스트 보기 -->
+   	<select id="rentView" resultType="ManagerReserveVO">
+		SELECT
+		    r.rent_no, m.m_id, m.m_name, b_name, rent_date, NVL(extend_count,0) extend_count, (rent_date + (NVL(extend_count,0)+1)*7) return_date,
+		    ceil(sysdate - (rent_date + (NVL(extend_count,0)+1)*7)) overdue_day
+		FROM
+		    rent r INNER JOIN member m ON r.m_no = m.m_no
+		    INNER JOIN book b ON r.b_no = b.b_no
+		    LEFT OUTER JOIN extend e ON e.rent_no = r.rent_no
+		    LEFT OUTER JOIN return re ON re.rent_no = r.rent_no
+		WHERE
+		    m_isshow = 'Y'
+		    AND rent_isshow = 'Y'
+		ORDER BY rent_date
+   	</select>
+   	
+   	<!-- 반납 버튼 누르는 명령 -->
+   	<update id="returnBtn" parameterType="int">
+   		UPDATE rent SET rent_isshow = 'N'
+		WHERE rent_no = #{rent_no}
+   	</update>
+   	
+   	<!-- 대여  질의 명령 -->
+	<update id="rentBtn" parameterType="int">
+		UPDATE reservation_book SET reserve_isshow = 'N'
+		WHERE reserve_no = #{reserve_no}
+	</update>
  </mapper>
  

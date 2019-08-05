@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -52,63 +52,94 @@
          margin-top : 10%;
    }
    
+   ul li{font-size:12px; list-style:none; margin-left:160px;}
+   
+   
+   .centerBox {
+	    clear: both;
+	    position: relative;
+	    padding: 50px 300px 200px 300px;
+	    border: 1px solid #dddddd;
+	    border-top: 2px solid #434040;
+	    color: #747474;
+	    background: #fff!important;
+	}
+	
+	.abtn{
+		border : 1px solid #d5d5d5;
+		border-radius : 3px;
+		color: inherit;
+    	text-decoration: none;
+    	font-size : 20px;
+    	padding : 10px 20px;
+	}
+	
+	#a1{
+		background-color : #f9f9f9;
+	}
+	#a2{
+		background-color : #fe6d02;
+		color : #fff;
+	}
+	#a3{
+		background-color : #266ac4;
+		color : #fff;
+	}
+	
+	.border_t{
+		border-top : 1px solid grey;
+		border-bottom : 1px solid grey;
+		padding : 15px 0px;
+	}
+	
+	.h3_mg{
+		margin-top : 50px;
+		color : #1f5d97;
+		font-weight : bold;
+	}
+	
+	.Bcontent{
+		padding-top : 7px;
+	}
 </style>
 
 <script type="text/javascript">
 $(document).ready(function() {
-
-    //[1] 기본값 설정
-   // 자료검색 버튼
-    $(".search1").hide(); //하단
-
-  
-    $("#search").click(function() {
-        $(".search1").toggle();
-    });
-    
-    
-   // 열린공간 버튼
-    $(".b1").hide(); //하단
-
-  
-    $("#a1").click(function() {
-        $(".b1").toggle();
-    });
-    
-       $(".c1").hide(); //하단
-   
-     
-       $("#bb1").click(function() {
-           $(".c1").toggle();
-       });
-    
-   // 도서관 안내 버튼
-    $(".b2").hide(); //하단
-
-  
-    $("#a2").click(function() {
-        $(".b2").toggle();
-    });
-       
-       $(".c2").hide();
-   
-     
-       $("#bb2").click(function() {
-           $(".c2").toggle();
-       });
-    
-   // 마이라이브러리
-    $(".b3").hide(); //하단
-
-  
-    $("#a3").click(function() {
-        $(".b3").toggle();
-    });
-
+	
+	// 예약버튼
+	$('#a3').click(function(){
+	
+		if(${ bkVO.reserve_isshow eq 'N'}==true){
+			alert('이미 예약되어 있는 책입니다.');
+			return;
+		}
+		
+		if(confirm('예약하시겠습니까?') == false) retrun;
+		
+		
+		$.ajax({
+			url: "bookReservation.bo",
+			type: "POST",
+			data: {
+				"b_no" : "${bkVO.b_no}"
+			},
+			dataType: 'json',
+			success: function(data){
+				if(data.result=='success'){
+					alert('예약이 완료되었습니다. 해당 도서를 가지고 카운터에서 대출하십시오.');
+					location.href="bookInfo.bo?b_no=${bkVO.b_no}";
+				}
+			},
+			error: function(){
+				alert('통신에러!');
+			}
+		});
+		
+		
+		
+		
+	});
 });
-
-
-
 </script>
 
 </head>
@@ -180,144 +211,75 @@ $(document).ready(function() {
             </ul>
          </nav>
 
-
-
-
-<div class="sview">
-      <div class="sinfo" style="margin-bottom:40px;">
-         <div class="thumb mbImg">
-
-            <p>
-               <img src="http://image.aladin.co.kr/product/53/67/cover/895660102x_2.jpg" alt="공중그네 : 오쿠다 히데오 장편소설" style="height: 225px">
-            </p>
-               
-            
-         </div>
-         <div class="info">
-            <ul>
-               <li style="line-height: 150%;">
-                  <b id="bookTitleInfo">공중그네 : 오쿠다 히데오 장편소설</b>
-               </li>
-               <li>자료유형 : 일반자료</li>
-               <li>저자 : 오쿠다 히데오 지음 ; 이영미 옮김</li>
-               <li>발행사항 : 은행나무, 2013</li>
-               <li>주제분류 : 833.6</li>
-                <br>
-               <a id="goBack" class="btn2" style="text-decoration:none"><span class="btnl"><i class="fa fa-bars"></i><b>&nbsp;목록</b></span></a>
-<!--                   <a href="" class="btn"><span>자세히보기</span><i class="fa fa-sort-down"></i></a> -->
- 
-            </ul>
-         </div>
-      </div>
-      <h4>소장위치</h4>
-      <ul class="mbDetail" id="position">
-
-               <li class="txt-left">기관명 : 동대문도서관</li>
-               <li class="txt-left">자료실명 : [동대문]종합자료2실(5층)</li>
-               <li class="txt-left">청구기호 : 833.6-ㅇ464ㄱ=3</li>
-               <li class="og">등록번호 : EMK000309563</li>
-               <li>도서상태 :
-
-                        대출가능
-
-               </li>
-               <li>   <!-- bookDetailList.loan_non_day_start 와 bookDetailList.loan_non_day_end 사잇 값이 아닐때 대출 가능 -->
-                  대출예약 :
-
-                     <p style="    height: 14px; line-height: 12px;" keyvalue1="5194664068" keyvalue2="MK" keyvalue3="MO" keyvalue4="loan" keyvalue5="833.6">예약불가</p>
-
-                        <a href="#" class="btn loan_resve og" keyvalue1="5194664068" keyvalue2="MK" keyvalue3="MO" keyvalue4="night" keyvalue5="833.6" keyvalue6="K02">야간 대출예약</a>
-
-               </li>
-
-            
-      </ul>
-
-      <table summary="도서 상태 및 등록 정보" id="position" class="pcDetail">
-         <colgroup>
-               <col style="width:12%" class="col1">
-               <col style="width:18%" class="col2">
-               <col style="width:15%" class="col3">
-               <col style="width:16%" class="col4">
-               <col style="width:10%" class="col5">
-               <col style="width:14%" class="col7">
-         </colgroup>
-         <thead>
-            <tr class="first">
-               <th style="text-align: center" class="first th1">기관명</th>
-               <th style="text-align: center" class="th2">자료실명</th>
-               <th style="text-align: center" class="th3">청구기호</th>
-               <th style="text-align: center" class="th4">등록번호</th>
-               <th style="text-align: center" class="th5">도서상태</th>
-               <th style="text-align: center" class="th6">대출예약</th>
-               <th style="text-align: center" class="last th7">택배대출</th>
-            </tr>
-         </thead>
-         <tbody>
-            <tr class="first">
-               <td class="txt-left first td1">동대문도서관</td>
-               <td class="txt-left td2">[동대문]종합자료2실(5층)</td>
-               <td class="txt-left td3">833.6-ㅇ464ㄱ=3</td>
-               <td class="og td4">EMK000309563</td>
-               <td class="td5">
-                  
-                  
-                        대출가능
-                        
-                  
-               </td>
-               <td style="line-height: 0px;text-align: center" class="td6">   <!-- bookDetailList.loan_non_day_start 와 bookDetailList.loan_non_day_end 사잇 값이 아닐때 대출 가능 -->
-                     <p style="    height: 14px; line-height: 12px;" keyvalue1="5194664068" keyvalue2="MK" keyvalue3="MO" keyvalue4="loan" keyvalue5="833.6">예약불가</p>
-                  <a href="#" class="btn loan_resve og" keyvalue1="5194664068" keyvalue2="MK" keyvalue3="MO" keyvalue4="night" keyvalue5="833.6" keyvalue6="K02">야간 대출예약</a>
-      
-               </td>
-               <td style="text-align: center;" class="last td7">
-
-               </td>
-            </tr>
-
-         </tbody>
-      </table>
-      <div class="sbtn mbBtn" style="margin-bottom:20px;">
-         <a href="" class="btn btn1 addStorage"><i class="fa fa-cart-arrow-down"></i><span>관심도서담기</span></a>
-         <a href="" class="btn btn2 goStorage" style="display:none;"><i class="fa fa-shopping-cart"></i><span>관심도서보기</span></a>
-         
-      </div>
-
-      
-      <h4>책소개</h4>
-      <table summary="책소개" class="aladinDetail-table">
-         <tbody>
-            <tr class="first">
-               <td style="text-align: left;" class="aladinDetail-td first last td1">공중그네 - 오쿠다 히데오 지음, 이영미 옮김 <br> 131회 나오키상 수상작. 어딘가 수상해보이는 정신과 병원을 배경으로, 이라부 박사와 여러 환자들이 벌이는 요절복통 사건들이 그려진다. 크고 작은 강박증 하나쯤 지니고 살아가는 현대인들에게, 툭툭 털고 일어나 앞으로 나아가도록 용기를 주는 즐거운 작품.</td>
-            </tr>
-         </tbody>
-      </table>
-      <br>
-      <br>
-      
-
-      
-      
-      <h4>저자소개</h4>
-      <table summary="저자소개">
-         <tbody>
-            <tr class="first">
-               <td style="text-align: left;" class="first last td1">
-
-                     저자 : 오쿠다 히데오<br>
-                  
-                     역자 : 이영미<br>
-
-               </td>
-            </tr>
-         </tbody>
-      </table>
-      <br>
-      <br>
-      
-   </div>
-
-   
-   <jsp:include page="${pageContext.request.contextPath}/Etc/footer.jsp"></jsp:include> 
+	<!-- 도서 상세보기 틀  -->        
+	<div class="centerBox">
+	
+		<!-- 그림이랑 같이 나오는 부분 -->
+        <div style="background:#fffef9; width:100%; height:310px">
+        	<div style="width:75%; margin:0 auto;">
+        		<div style="background:#000; width:148px; height:227px; margin-top:40px; float:left;">
+        			<img src="${bkVO.b_img}" style="width : 100%; height : 100%;" />
+        		</div>
+        		<h3 style="padding-top:60px; padding-left:180px; font-weight:bold; color:#000; line-height:28px; letter-sapcing:-0.5px;">${bkVO.b_name}</h3>
+        		<ul>
+        			<li class="Bcontent"><b>자료유형 : </b>${ bkVO.class_subject }</li>
+        			<li class="Bcontent"><b>저자: </b>${ bkVO.b_writer }</li>        			
+        			<li class="Bcontent"><b>출판사 : </b>${ bkVO.b_publisher }</li>        			
+        			<li class="Bcontent"><b>가격 : </b>${ bkVO.b_price }</li>        			
+        			<li class="Bcontent"><b>할인가 : </b>${ bkVO.b_discount }</li>        			
+        			<li class="Bcontent"><b>발행일자 : </b>${ bkVO.b_pubdate }</li>        			
+        			<li class="Bcontent"><b>ISBN : </b>${ bkVO.b_isbn }</li>        			
+        		</ul>
+        	</div>    
+        </div>
+        
+        <!-- 소장위치 부분 -->
+        <div>
+			<h3 class="h3_mg">소장위치</h3>
+			<table>
+			
+				<tr>
+					<th>기관명</th>
+					<th>자료실명</th>
+					<th>ISBN</th>					
+					<th>도서상태</th>					
+					<th>대출예약</th>									
+				</tr>
+				
+				<tr>
+					<td>DayeLibrary</td>
+					<td>종합자료2실(5층)</td>
+					<td>${ bkVO.b_isbn }</td>					
+					<td>${ bkVO.reserve_isshow eq 'Y' ? '대출가능' : '대출불가' }</td>				
+					<td>${ bkVO.reserve_isshow eq 'Y' ? '예약가능' : '예약불가' }</td>															
+				</tr>
+				
+			</table>
+		</div>
+		
+		<!-- 버튼 부분 -->
+		<div style="margin-bottom:20px; text-align: center;">
+			<a href="bookSearchView.bo" class="abtn" id="a1"><i class="fa fa-list-ul" aria-hidden="true"></i><span> 목록으로</span></a>
+			<a href="#" class="abtn" id="a2"><i class="fa fa-cart-arrow-down"></i><span> 관심도서담기</span></a>
+			<a href="#" class="abtn" id="a3"><i class="fa fa-shopping-cart"></i><span> 예약하기</span></a>
+		</div>
+		
+		<!-- 책소개 부분 -->
+		<h3 class="h3_mg">책소개</h3>
+		<div class="border_t">
+			<div style="text-align: left;" class="book_info">
+				<img src="${bkVO.b_img}"> ${bkVO.b_name} <br> ${bkVO.b_description}
+			</div>
+		</div>
+		
+		<!-- 저자소개 부분 -->
+		<h3 class="h3_mg">저자소개</h3>
+		<div class="border_t" style="text-align: left;">
+						저자 : ${bkVO.b_writer }
+		</div>
+				
+	</div>
+	
+	<!-- footer 부분 -->
+	<jsp:include page="../Etc/footer.jsp" flush="false" />
 </html>

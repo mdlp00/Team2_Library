@@ -1,5 +1,15 @@
 package com.library.bo.vo.ManagerPage;
 
+/**
+ * 
+ * @author	안다예
+ * @since	2019.00.00
+ * @version	1.0
+ * @see
+ * 			변경 이력 관리
+ * 			2019.00.00		ManagerVO 클래스 제작		작성자 : 안다예
+ */
+
 public class ManagerVO {
 	private int no;
 	private String mnid;

@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
+			"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 
+ * 
+ * @author	양희준
+ * @since	2019.00.00
+ * @version	1.0
+ * @see
+ * 			변경 이력 관리
+ * 			2019.00.00		BookSQL.xml 제작						작성자 : 양희준
+ * 			2019.00.00		searchCnt 제작						작성자 : 양희준
+ * 			2019.00.00		book_search_count 제작				작성자 : 양희준
+ * 			2019.00.00		book_search_list 제작					작성자 : 양희준
+ * 			2019.00.00		book_info 제작						작성자 : 양희준
+ * 			2019.00.00		book_reservation 제작					작성자 : 양희준
+ *
+ -->
+			
+
+<mapper namespace="bkSQL">
+
+	<!-- 검색명령문(쓸지 안 쓸지 모름) -->
+	<select id="searchCnt" resultType="int" parameterType="hashmap">
+		SELECT
+		    count(*) cnt
+		FROM
+		    book b inner join CLASSIFICATION c
+		    ON b.CLASS_NO = c.CLASS_NO
+        WHERE            
+            <choose>
+            	<when test="kind eq 'title'">
+            		b.B_NAME LIKE '%' || #{word} || '%'
+            	</when>
+            	<when test="kind eq 'body'">
+            		b.B_DESCRIPTION LIKE '%' || #{word} || '%'
+            	</when>
+            	<when test="kind eq 'publisher'">
+            		b.B_PUBLISHER LIKE '%' || #{word} || '%'
+            	</when>
+            	<when test="kind eq 'writer'">
+            		b.B_WRITER LIKE '%' || #{word} || '%'
+            	</when>
+            	<when test="kind eq 'all'">
+            		( 
+             		b.B_NAME LIKE '%' || #{word} || '%'
+             		OR b.B_DESCRIPTION LIKE '%' || #{word} || '%'
+             		OR b.B_PUBLISHER LIKE '%' || #{word} || '%'
+             		OR b.B_WRITER LIKE '%' || #{word} || '%'
+            		)
+            	</when>
+            </choose>
+	</select>
+	
+	
+	<!-- 검색 개수 찾아주는 명령문 -->
+	<select id="book_search_count"  resultType="int"  parameterType="java.util.Map">
+	
+			SELECT
+				nvl(count(*),0) cnt
+			 FROM
+			     (
+			        select * from book  inner join CLASSIFICATION c ON book.CLASS_NO = c.CLASS_NO
+			        <trim prefix="where"  prefixOverrides="or|and"> 
+			              <if test="name !=null">
+			              	B_NAME LIKE '%' || upper(#{ name }) || '%'
+			              </if>
+			              <if test="description !=null">
+			              	upper(B_DESCRIPTION) LIKE '%' || upper(#{ description }) || '%'
+			              </if>
+			              <if test="writer !=null">
+			              	upper(B_WRITER)  LIKE '%' || upper(#{ writer }) || '%'
+			              </if>
+			              <if test="publisher !=null">
+			              	upper(B_PUBLISHER) LIKE '%' || upper(#{ publisher }) || '%'
+			              </if>
+			        </trim>
+			     ) b
+	</select>
+	
+	
+	<!-- 검색 하는 명령문 -->
+	<select id="book_search_list"  resultType="bkVO"  parameterType="java.util.Map">
+		select rank, b_no, b_name, b_writer, b_publisher, b_img, b_description, class_subject from
+		(
+			 SELECT
+				rank() over (order by b_no) rank,b.*
+			 FROM
+			     (
+			        select * from book  inner join CLASSIFICATION c ON book.CLASS_NO = c.CLASS_NO
+			        <trim prefix="where"  prefixOverrides="or|and"> 
+			              <if test="name !=null">
+			              	B_NAME LIKE '%' || upper(#{ name }) || '%'
+			              </if>
+			              <if test="description !=null">
+			              	upper(B_DESCRIPTION) LIKE '%' || upper(#{ description }) || '%'
+			              </if>
+			              <if test="writer !=null">
+			              	upper(B_WRITER) LIKE '%' || upper(#{ writer }) || '%'
+			              </if>
+			              <if test="b_publisher !=null">
+			              	upper(B_PUBLISHER) LIKE '%' || upper(#{ B_PUBLISHER }) || '%'
+			              </if>
+			        </trim>
+			     ) b
+		)
+		where rank between #{ start }  and #{ end }
+	
+	</select>
+	
+	<!-- 도서 상세정보 보여주는 명령문 -->
+	<select id="book_info"  resultType="bkVO"  parameterType="int">
+		SELECT
+		    book.b_no, b_name, b_writer, b_publisher, b_img, b_description, b_price, b_discount, b_pubdate, b_isbn, 
+		    CLASSIFICATION.CLASS_SUBJECT class_subject,
+		    nvl(reserve_isshow,'Y') reserve_isshow
+		    
+		FROM
+		    BOOK INNER JOIN CLASSIFICATION   ON BOOK.CLASS_NO = CLASSIFICATION.CLASS_NO
+		    left outer join RESERVATION_BOOK ON  BOOK.B_NO=RESERVATION_BOOK.B_NO
+		WHERE
+		    BOOK.B_NO = #{b_no}
+	</select>
+	
+	<!-- 예약하는 명령문 -->
+	<insert id="book_reservation" parameterType="bkVO">
+		INSERT INTO RESERVATION_BOOK
+		    (RESERVE_NO, M_NO, B_NO)
+		VALUES
+		    ((select nvl(max(RESERVE_NO),0)+1 from RESERVATION_BOOK),#{m_no},#{b_no})
+	</insert>
+	
+	
+</mapper>
