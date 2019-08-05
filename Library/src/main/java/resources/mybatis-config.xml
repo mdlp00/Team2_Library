@@ -14,12 +14,21 @@
 	<typeAliases>
 		<typeAlias alias="studyVO" type="com.library.bo.vo.StudyRoom.StudyRoomVO" />
 		<typeAlias alias="mVO" type="com.library.bo.vo.MemberInfo.MemberVO" />
+		<typeAlias alias="bkVO" type="com.library.bo.vo.BookVO"/>
+		<typeAlias alias="manaVO" type="com.library.bo.vo.ManagerPage.ManagerVO"/>
+		<typeAlias alias="nVO" type="com.library.bo.vo.LibraryInfo.NoticeVO"/>
+		<typeAlias alias="brVO" type="com.library.bo.vo.BookInfo.BookRentVO"/>
+		<typeAlias alias="reserveVO" type="com.library.bo.vo.BookInfo.BookReserveVO"/>
+		<typeAlias alias="ManagerReserveVO" type="com.library.bo.vo.ManagerPage.ManagerReserveVO"/>
 	</typeAliases>
 	
 	<!-- sql 파일 읽어 오는 부분 -->
 	<mappers>
 		<mapper resource="com/library/bo/sql/StudyRoom/StudyRoomSQL.xml" />
 		<mapper resource="com/library/bo/sql/MemberInfo/MemberSQL.xml" />
+		<mapper resource="com/library/bo/sql/BookSQL.xml" />
+		<mapper resource="com/library/bo/sql/ManagerPage/ManagerSQL.xml"/>
+		<mapper resource="com/library/bo/sql/BookInfo/BookInfoSQL.xml"/>
 	</mappers>
 	
 </configuration>

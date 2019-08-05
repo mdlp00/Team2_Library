@@ -12,6 +12,10 @@
 		
 	<bean id="studyDAO" class="com.library.bo.dao.StudyRoom.StudyRoomDAO" />
 	<bean id="mDAO" class="com.library.bo.dao.MemberInfo.MemberDAO" />
+ 	<bean id="bkDAO" class="com.library.bo.dao.BookDAO"  autowire="default"/>
+ 	<bean id="manaDAO" class="com.library.bo.dao.ManagerPage.ManagerDAO"  autowire="default"/>
+ 	<bean id="bifDAO" class="com.library.bo.dao.BookInfo.BookInfoDAO"  autowire="default"/>
+ 	
 <!-- 	<bean id="nDAO" class="com.library.bo.dao.BookInfo." />
 	<bean id="nDAO" class="com.library.bo.dao.BookSearch." />
 	<bean id="nDAO" class="com.library.bo.dao.MemberInfo." />

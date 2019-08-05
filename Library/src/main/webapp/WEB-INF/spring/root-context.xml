@@ -7,7 +7,6 @@
 	   					   http://www.springframework.org/schema/context
 	   					   http://www.springframework.org/schema/context/spring-context-4.3.xsd">
 	
-	
 	<context:annotation-config />
 	
 	<!-- JSON2 -->
@@ -16,12 +15,11 @@
 	 	 <property name="supportedMediaTypes" value="application/json" />
 	</bean>
 	
-
 	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
 		<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver" />
 		<property name="url" value="jdbc:oracle:thin:@localhost:1521:xe" />
-		<property name="username" value="library" />
-		<property name="password" value="increpas" />
+		<property name="username" value="pF" />
+		<property name="password" value="12345" />
 		<property name="maxActive" value="8" />
 	</bean>
 	
