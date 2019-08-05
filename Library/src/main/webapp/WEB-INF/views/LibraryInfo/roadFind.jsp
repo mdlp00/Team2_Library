@@ -50,6 +50,11 @@
 	a{
 	text-decoration:none;
 	}
+	.road{
+	font-size:1.3em;
+	font-weight: bold;
+	
+	}
 </style>
 
 <script type="text/javascript">
@@ -103,7 +108,7 @@ $(document).ready(function() {
     $("#a3").click(function() {
         $(".b3").toggle();
     });
-
+	
 });
 
 
@@ -188,48 +193,10 @@ $(document).ready(function() {
 				</ul>
 			</nav>
 			
-		<!-- 층별안내-->
-		<colgroup>
-    	<col style="width: 20%;" class="col1">
-    </colgroup>
-    <table>
-		<div class="doc-title"> <h2> [ 층별안내 ] </h2>
-			<thead>
-				<tr class="first">
-			        <th class="first th1">위치(층)</th>
-			        <th class="last th2">시설</th>
-			     </tr>
-			</thead>
-			</table>
-			<tbody>
-			<table>
-      <tr id="5F" class="first">
-        <th class="first th1">5층</th>
-        <td class="left last td1"><a style="color:#222;">종합자료2실</a></td>
-      </tr>
-      <tr id="4F">
-        <th class="first th1">4층</th>
-        <td class="left last td1"><a style="color:#222;">종합자료1실</a></td>
-      </tr>
-      <tr id="3F">
-        <th class="first th1">3층</th>
-        <td class="left last td1"><a  style="color:#222;">자율학습2실</a>, 관장실, 행정지원과, 정보자료과, 독서문화진흥과</td>
-      </tr>
-      <tr id="2F">
-        <th class="first th1">2층</th>
-        <td class="left last td1"><a style="color:#222;">자율학습1실</a>, <a  style="color:#222;">시청각실</a>, <a  style="color:#222;">세미나실</a>, <a  style="color:#222;">문화교실</a>,<astyle="color:#222;">서고</a>,<a  style="color:#222;">사물함</a></td>
-      </tr>
-      <tr id="1F">
-        <th class="first th1">1층</th>
-        <td class="left last td1"><a  style="color:#222;">어린이실</a>, <a  style="color:#222;">도서반납함</a>, 북카페, 안내실 </td>
-      </tr>
-      <tr id="B1">
-        <th class="first th1">지하</th>
-        <td class="left last td1"><a  style="color:#222;">식당/매점</a>, 보일러실, 서고 </td>
-      </tr>
-    </tbody>
-		
-		</table>
+		<!-- 오시는길-->
+	 <label for="searchField" style="font-size: 40px;"> [오시는길]</label>
+	<img src="${pageContext.request.contextPath}/resources/img/road.PNG" >
+
 		<jsp:include page="../Etc/footer.jsp"></jsp:include>
 	<!-- 
 		Scripts

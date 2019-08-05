@@ -13,7 +13,7 @@ import com.library.bo.dao.LibraryInfo.NoticeDAO;
 
 @Controller
 @RequestMapping("/LibraryInfo")
-public class Notice {
+public class Notice {    
 
 	@RequestMapping("/notice.bo")
 	public ModelAndView notice(ModelAndView mv, HttpServletRequest req) {

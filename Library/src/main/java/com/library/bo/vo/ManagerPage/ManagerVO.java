@@ -2,26 +2,27 @@ package com.library.bo.vo.ManagerPage;
 
 public class ManagerVO {
 	private int no;
-	private String id;
-	private String pw;
+	private String mnid;
+	private String mnpw;
 	private String name;
-	public int getNo() {
+	public int getNo() {   
 		return no;
 	}
 	public void setNo(int no) {
 		this.no = no;
 	}
-	public String getId() {
-		return id;
+	
+	public String getMnid() {
+		return mnid;
 	}
-	public void setId(String id) {
-		this.id = id;
+	public void setMnid(String mnid) {
+		this.mnid = mnid;
 	}
-	public String getPw() {
-		return pw;
+	public String getMnpw() {
+		return mnpw;
 	}
-	public void setPw(String pw) {
-		this.pw = pw;
+	public void setMnpw(String mnpw) {
+		this.mnpw = mnpw;
 	}
 	public String getName() {
 		return name;

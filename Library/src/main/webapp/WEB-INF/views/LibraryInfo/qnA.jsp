@@ -607,5 +607,6 @@
 			</div>
 		</div>
 	</div>
+	<jsp:include page="../Etc/footer.jsp"></jsp:include>
 </body>
 </html>

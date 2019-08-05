@@ -3,35 +3,13 @@
 	PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 			"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="nSQL">
+<mapper namespace="nSQL">   
 
 	<insert id="insertBar" parameterType="nVO">
 		<selectKey keyProperty="m_name" resultType="String" order="BEFORE">
 		
 		SELECT
-    		 manager_name m_name
-		FROM
-			 manager
-			WHERE manager_name = #{writer}
-		</selectKey>
-
-		INSERT INTO
-            notice(n_no, n_title, manager_name)
-        values (
-	        (SELECT NVL(MAX(n_no)+1, 1) FROM notice),
-	        #{n_title},#{manager_name}
-	        )
-
-		</insert>
-		
-		
-		
-		
-	<insert id="NoticeDetail" parameterType="nVO">
-		<selectKey keyProperty="m_name" resultType="String" order="BEFORE">
-		
-		SELECT
-    		 manager_name m_name
+    		 manager_name m_name  
 		FROM
 			 manager
 			WHERE manager_name = #{writer}
@@ -46,6 +24,82 @@
 
 		</insert>
 		
+		<select id="selectBar" resultType="nVO" parameterType="pUtil">
+			
+		SELECT
+       		 rno, no, title, name, ndate, views, body
+		FROM(
+        SELECT
+            ROWNUM rno, no, title, name, ndate, views, body
+        FROM
+                    (select
+                      n_no no, n_title title, m.manager_name name, 
+                      to_char(n_date, 'yyyy/mm/dd') ndate, 
+                      n_views views,n_body body
+                    from
+                        manager m
+                    inner 
+                        join notice n
+                    on 
+                        m.manager_name = n.manager_name
+                    where 
+                        n_isshow = 'Y'
+                    ORDER BY
+                        n_date DESC
+                        )
+   			 )
+	 WHERE
+   			 rno BETWEEN #{startContent} and #{endContent}
+			
+			
+		</select>
+		
+		<select id="selTotalCnt" resultType="int">
+			SELECT
+				count(*)
+			FROM
+				notice
+			WHERE
+				n_isshow = 'Y'
+	</select>
+	
+		
+		 <select id="DetailMain" resultType="nVO" parameterType="int">           
+			SELECT
+				  n_no no, 
+	              n_title title,
+	              MANAGER_NAME name, 
+	             n_body body,
+	              to_char(n_date, 'yyyy/mm/dd') ndate,
+	             n_views views
+			FROM
+				notice
+			WHERE
+				n_no = #{rno}
+	</select>
+	
+	<select id="noticeSearch" resultType="nVO" parameterType="string">
+		select
+    		n_no  no, n_title title, n_body body, manager_name name, to_char(n_date, 'yyyy/mm/dd') ndate, n_views views
+		From
+		    notice
+		where
+		    n_title like '%' || #{word} || '%'
+	</select>
+	
+	<update id="viewsUpdate"  parameterType="int">
+	
+		UPDATE
+		    notice
+		set
+		     n_views  = (n_views + 1)
+		where
+		    n_no = #{n_no} 
+	</update>
+	
+	
+	
+	
 </mapper>
 
 		

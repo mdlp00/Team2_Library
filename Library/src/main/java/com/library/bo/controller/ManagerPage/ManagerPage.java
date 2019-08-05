@@ -1,5 +1,6 @@
 package com.library.bo.controller.ManagerPage;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +10,7 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
 
 import com.library.bo.dao.ManagerPage.ManagerDAO;
+import com.library.bo.vo.LibraryInfo.NoticeVO;
 import com.library.bo.vo.ManagerPage.ManagerVO;
 
 
@@ -28,15 +30,21 @@ public class ManagerPage {
 	
 	   return mv;
    }
+   
    @RequestMapping("/loginProc.bo")
-	   public ModelAndView LoginProc(ModelAndView mv,HttpSession session, RedirectView rv, ManagerVO manaVO) {
-
+   public ModelAndView LoginProc(ModelAndView mv,HttpSession session, RedirectView rv, ManagerVO manaVO) {
+	   
+	   String id = manaVO.getMnid();
+	   String pw = manaVO.getMnpw();
+	   System.out.println("********* " + id);
+	   System.out.println("********* " + pw);
+	   
 	   mv.addObject("DATA", manaVO);
 	   int cnt = manaDAO.Manalogin(manaVO);
 	   System.out.println(cnt);
 	   
 	   if(cnt == 1) {
-			session.setAttribute("SID", manaVO.getId());
+			session.setAttribute("SID", manaVO.getMnid());
 			// 로그인이 성공했으면 뷰를 리다이렉트 시켜줘야 한다. (<== 요청을 유지하면 곤란하니까...)
 			rv.setUrl("../");
 		} else {
@@ -71,6 +79,38 @@ public class ManagerPage {
 	   mv.setView(rv);
 	   return mv;
    }
+   
+   
+   	//공지사항 글 작성
+   		@RequestMapping("/noticeWrite.bo")
+   			public ModelAndView nWrite(ModelAndView mv, HttpServletRequest session, RedirectView rv ) {
+   				String view = "ManagerPage/noticeWrite";
+   				
+   				mv.setViewName(view);
+   				return mv;
+   			}
+   		
   
+   // 공지글 작성 올리기
+   @RequestMapping("/noticeWriteProc.bo")
+   public ModelAndView noticeWrite(ModelAndView mv, HttpSession session, RedirectView rv, NoticeVO nVO) {
+	   	String view = "../LibraryInfo/notice.bo";
+	   	
+	   	String title = nVO.getTitle();
+	   	String body = nVO.getBody();
+	   	
+	   	int cnt = manaDAO.NoticeInsert(nVO);
+	   	if(cnt ==1) {
+	   		rv.setUrl("../LibraryInfo/notice.bo");
+	   		mv.setView(rv);
+	   	}else {
+	   		rv.setUrl("../ManagerPage/notieWrite.bo");
+	   		mv.setView(rv);
+	   	}
+	 
+	
+	   	
+	   	return mv;
+   }
    
 }
