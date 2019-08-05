@@ -40,4 +40,14 @@ public class MemberDAO {
 		return sqlSession.insert("mSQL.addMember", mVO);
 	}
 	
+	// �쉶�썝�젙蹂� 蹂닿린
+	public MemberVO getMyProc(String mid) {
+		return sqlSession.selectOne("mSQL.myProc", mid);
+	}
+	
+	// �쉶�썝 �젙蹂� �닔�젙�븯�뒗 �븿�닔
+	public int upMy(MemberVO mVO) {
+		return sqlSession.update("mSQL.upMy", mVO);
+	}
+	
 }

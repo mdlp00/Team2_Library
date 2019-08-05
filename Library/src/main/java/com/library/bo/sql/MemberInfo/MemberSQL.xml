@@ -34,33 +34,69 @@
                 m_isshow = 'Y'
 	</select>
 	
-		<insert id="insertMember" parameterType="mVO">	 	
-		 	<selectKey keyProperty="mno" resultType="int" order="BEFORE">
-				SELECT NVL(MAX(m_no) + 1, 1) from member
-		 	</selectKey>	
-				INSERT INTO
-					member(
-						m_no, m_id, m_pw, m_name, m_tel, 
-						m_addr, m_mail, m_birth
-					)
-				VALUES(
-					#{mno}, #{mid}, #{mpw}, #{mname}, #{mtel},
-					#{maddr}, #{mail}, #{mbirth}
-				)
-		</insert>
-	
-		<insert id="addMember" parameterType="mVO">
-			<selectKey keyProperty="mno" resultType="int" order="BEFORE">
-				SELECT NVL(MAX(m_no)+1, 1) from member
-			</selectKey>
+	<insert id="insertMember" parameterType="mVO">	 	
+		 <selectKey keyProperty="mno" resultType="int" order="BEFORE">
+			SELECT NVL(MAX(m_no) + 1, 1) from member
+		 </selectKey>	
 			INSERT INTO
 				member(
 					m_no, m_id, m_pw, m_name, m_tel, 
 					m_addr, m_mail, m_birth
 				)
 			VALUES(
-				#{mno}, #{mid}, #{mpw}, #{mname}, #{mtel}, 
-				{maddr}, #{mail}, #{mbirth}
+				#{mno}, #{mid}, #{mpw}, #{mname}, #{mtel},
+				#{maddr}, #{mail}, #{mbirth}
 			)
-		</insert>
+	</insert>
+	
+	<insert id="addMember" parameterType="mVO">
+		<selectKey keyProperty="mno" resultType="int" order="BEFORE">
+			SELECT NVL(MAX(m_no)+1, 1) from member
+	</selectKey>
+		INSERT INTO
+			member(
+				m_no, m_id, m_pw, m_name, m_tel, 
+				m_addr, m_mail, m_birth
+			)
+		VALUES(
+			#{mno}, #{mid}, #{mpw}, #{mname}, #{mtel}, 
+			{maddr}, #{mail}, #{mbirth}
+		)
+	</insert>
+	
+	<select id="totalCnt" resultType="int">
+		SELECT
+			count(*)
+		FROM
+			member
+		WHERE
+			ISSHOW = 'Y'
+	</select>
+	
+	<select id="myProc" resultType="mVO" parameterType="string">
+		select
+		  	m_id mid, m_pw mpw, m_name mname, m_tel mtel, m_addr maddr, m_mail mail, m_birth mbirth
+		from
+		    member
+		where
+		    m_id = #{mid}	
+	</select>
+	
+	<update id="upMy" parameterType="mVO">	
+		UPDATE
+			member
+		<trim prefix="SET" suffixOverrides=",">
+			<if test="mail != null and mail != ''">
+				m_mail = #{mail},
+			</if>
+			<if test="maddr != null and maddr != ''">
+				m_addr = #{maddr},
+			</if>
+			<if test="mtel != null and mtel != ''">
+				m_tel = #{mtel}
+			</if>
+		</trim>
+		WHERE
+			m_id = #{mid}
+	</update>
 </mapper>
