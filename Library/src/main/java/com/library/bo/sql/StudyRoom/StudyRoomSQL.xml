@@ -11,6 +11,8 @@
  * 			2019.07.23		selDate 제작				작성자 : 강찬규
  * 			2019.07.23		reserveDate 제작			작성자 : 강찬규
  * 			2019.08.01		reserveDate 수정			작성자 : 강찬규
+ * 			2019.08.06		selIdList 제작				작성자 : 강찬규
+ * 			2019.08.06		cancelReserve 제작			작성자 : 강찬규
  *
  -->
 <mapper namespace="studySQL">
@@ -32,7 +34,17 @@
 		WHERE
 			rDate = #{date}
 	</select>
-	
+	<!-- 사용자에 따른 예약 내역 불러오는 질의 명령 -->
+	<select id="selIdList" resultType="studyVO" parameterType="String">
+		SELECT
+			room_no roomNo, room_code roomCode, substr(START_DATE, 1, 10) rDate, substr(START_DATE, 12) startTime,
+			substr(END_DATE, 12) endTime, START_DATE sDate, END_DATE eDate
+		FROM
+			room
+		WHERE
+			room_isshow = 'N'
+			AND m_no = (SELECT m_no FROM member WHERE m_id = #{id})
+	</select>
 <!-- INSERT -->
 	<!-- 예약하기 -->
 	<insert id="reserveDate" parameterType="studyVO">
@@ -45,4 +57,13 @@
 	</insert>
 
 <!-- UPDATE -->
+	<!-- 예약취소 -->
+	<update id="cancelReserve" parameterType="int">
+		UPDATE
+			room
+		SET
+			room_isshow = 'Y'
+		WHERE
+			room_no = #{roomNo}
+	</update>
 </mapper>

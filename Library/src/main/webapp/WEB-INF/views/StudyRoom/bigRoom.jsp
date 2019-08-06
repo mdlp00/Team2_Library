@@ -319,7 +319,7 @@
 								<input type="hidden" id="roomCode" name="roomCode" value="3">
 								<input type="hidden" id="startDate" name="startDate">
 								<div class="times_wrap">
-									<input type="button" class="times_time" id="t9" value="09:00">
+									<input type="button" class="times_time" id="t09" value="09:00">
 									<input type="checkbox" name="startTime" value="09">
 									<input type="button" class="times_time" id="t10" value="10:00">
 									<input type="checkbox" name="startTime" value="10">
