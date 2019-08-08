@@ -5,11 +5,11 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>StudyRoom 소개</title>
-<!-- Css -->
+	<!-- Css -->
 	<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/assets/css/main.css" />
 	<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/assets/css/w3.css" />
 	<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/assets/css/w3-colors-win8.css" />
-<!-- Scripts -->
+	<!-- Scripts -->
 	<script src="${pageContext.request.contextPath}/resources/assets/js/jquery.min.js"></script>
 	<script src="${pageContext.request.contextPath}/resources/assets/js/jquery.scrolly.min.js"></script>
 	<script src="${pageContext.request.contextPath}/resources/assets/js/skel.min.js"></script>
@@ -36,7 +36,7 @@
 		font-weight: bold;
 	}
 	.SSul {
-		height: 200px; padding-top: 10px;
+		padding-top: 10px;
 	}
 	.ssul {
 		margin: 0px; padding: 0px;
@@ -56,43 +56,10 @@
 	.read {
 		width: 300px; height: 250px;
 	}
-	
-	/* footer */
-	#myfooter {
-		width: 100%;
-		height: 150px;
-		float: left;
-		font-size: 12px;
-		border-top: 2px solid gray;
-		margin: 30px 0px 0px;
-	}
-	#dimg {
-		height: 100%;
-	}
-	.divimg {
-		height: 100% ;
-		width: 150px;
-		float: left;
-		margin-left: 10%;
-	}
-	.divtext {
-		height: 100% ;
-		float: left;
-		padding-left:10px;
-		padding-top: 1.5%;
-		line-height: 2.8em;
-	}
-	.divinline {
-		display: inline-block;
-		height: 100%;
-	}
-	.s1 {
-		display: block;
-	}
 </style>
 <script type="text/javascript">
 	$(document).ready(function() {
-		// [2] 스터디룸 이동
+		// 스터디룸 이동
 		// 작은방
 		$('#smallRoom').click(function(){
 			$(location).attr('href', 'goSmall.bo');
@@ -130,7 +97,7 @@
 					<div class="SSul">
 						<p class="w3-center w3-large ssul">작은방</p>
 						<p class="w3-center w3-large ssul">사용인원 : 2 ~ 4인</p>
-						<p class="ssul">이런저런 설명이 있구요<br>여기는 작은방 설명 페이지</p>
+						<p class="ssul">소수의 인원이 프라이빗하게<br>사용하기 좋은 공간입니다.</p>
 					</div>
 				</div>
 				<div class="ttl" id="mediumRoom">
@@ -140,7 +107,7 @@
 					<div class="SSul">
 						<p class="w3-center w3-large ssul">중간방</p>
 						<p class="w3-center w3-large ssul">사용인원 : 4 ~ 6인</p>
-						<p class="ssul">이런저런 설명이 있구요<br>여기는 중간방 설명 페이지</p>
+						<p class="ssul">여러 사람이 함께 작업하고<br>회의하기에 좋은 공간입니다.</p>
 					</div>
 				</div>
 				<div class="ttl" id="bigRoom">
@@ -150,7 +117,7 @@
 					<div class="SSul">
 						<p class="w3-center w3-large ssul">큰방</p>
 						<p class="w3-center w3-large ssul">사용인원 : 8 ~ 12인</p>
-						<p class="ssul">이런저런 설명이 있구요<br>여기는 큰방 설명 페이지</p>
+						<p class="ssul">다수의 사람들이 새로운 도전을<br>꿈꾸기에 좋은 공간입니다.</p>
 					</div>
 				</div>
 			</div>

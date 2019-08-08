@@ -136,7 +136,7 @@
 </style>
 <script type="text/javascript">
 	$(document).ready(function() {
-		// [2] 예약 설정
+		// 예약 설정
 		// 날짜 선택 창 띄우기
 		$('#reserve').click(function(){
 			$('#reserveForm').fadeIn(500);
@@ -209,7 +209,8 @@
 </head>
 <body class="subpage">
 	<!-- Header -->
-	<jsp:include page="../Etc/listbar.jsp" />		
+	<jsp:include page="../Etc/listbar.jsp" />
+
 	<!-- Page content -->
 	<div class="w3-content" style="max-width:1100px; margin-top: 10px; padding-bottom: 1000px;">
 		<!-- 상단 사진 -->
@@ -348,6 +349,7 @@
 			</div>
 		</div>
 	</div>
+
 	<!-- Footer -->
 	<jsp:include page="../Etc/footer.jsp" />
 </body>

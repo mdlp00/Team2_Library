@@ -1,5 +1,24 @@
 package com.library.bo.controller.MemberInfo;
-
+/**
+ * 
+ * @author	김환진
+ * @since	2019.07.28
+ * @version	1.0
+ * @see
+ * 			변경 이력 관리
+ * 			2019.07.28		Member 클래스 제작			작성자 : 김환진
+ * 			2019.07.28		login 함수 제작				작성자 : 김환진
+ * 			2019.07.28		join 함수 제작				작성자 : 김환진
+ * 			2019.07.28		loginProc 함수 제작			작성자 : 김환진
+ * 			2019.07.28		logoutProc 함수 제작		작성자 : 김환진
+ * 			2019.07.28		joinProc 함수 제작			작성자 : 김환진
+ * 			2019.07.28		idCheck 함수 제작			작성자 : 김환진
+ * 			2019.07.28		mypage 함수 제작			작성자 : 김환진
+ * 			2019.07.28		mypageEdit 함수 제작		작성자 : 김환진
+ * 			2019.07.28		upmy 함수 제작				작성자 : 김환진
+ * 			2019.08.07		goSRR 함수 제작				작성자 : 강찬규
+ * 			2019.08.07		cancelSRR 함수 제작			작성자 : 강찬규
+ */
 import java.io.*;
 import java.util.*;
 
@@ -8,7 +27,7 @@ import javax.servlet.http.*;
 import org.springframework.beans.factory.annotation.*;
 import org.springframework.stereotype.*;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.*;
 import org.springframework.web.servlet.view.*;
 
 import com.library.bo.dao.MemberInfo.*;
@@ -25,15 +44,14 @@ public class Member {
 	@Autowired
 	StudyRoomDAO studyDAO;
 	
-	// 濡쒓렇�씤 �럹�씠吏� 泥섎━
+	// 로그인 페이지 열기
 	@RequestMapping("/login.bo")
 	public ModelAndView login(ModelAndView mv, HttpServletRequest req) {
 		String view ="MemberInfo/login";
 		mv.setViewName(view);
 		return mv;
 	}
-	
-	// 濡쒓렇�씤�떆 �븘�씠�뵒媛� �엳�쑝硫� 硫붿씤�쑝濡� �븞�릺硫� �쉶�썝媛��엯�쑝濡�
+	// 로그인 처리하기
 	@RequestMapping("/loginProc.bo")
 	public ModelAndView loginProc(HttpSession session, RedirectView rv, ModelAndView mv, MemberVO mVO) {
 		mv.addObject("DATA", mVO);
@@ -47,15 +65,14 @@ public class Member {
 		mv.setView(rv);
 		return mv;
 	}
-	
-	
+	// 로그아웃 처리하기
 	@RequestMapping("/logoutProc.bo")
 	public ModelAndView logoutProc(HttpSession session, ModelAndView mv) {
 		session.removeAttribute("SID");
 		mv.setViewName("redirect:../");
 		return mv;
 	}
-
+	// 회원가입 페이지 열기
 	@RequestMapping("/join.bo")
 	public ModelAndView join(HttpSession session, RedirectView rv, ModelAndView mv) {
 		String mid = (String) session.getAttribute("SID");  
@@ -64,10 +81,10 @@ public class Member {
 		} else {
 			rv.setUrl("../");
 			mv.setView(rv);
-		}		
+		}
 		return mv;
 	}
-	
+	// 회원가입 처리하기
 	@RequestMapping("/joinProc.bo")
 	public ModelAndView joinProc(ModelAndView mv, MemberVO mVO, RedirectView rv, HttpServletRequest req) {	
 		int cnt = mDAO.insertMember(mVO);
@@ -79,25 +96,19 @@ public class Member {
 		mv.setView(rv);
 		return mv;
 	}
-	
-	// �븘�씠�뵒 鍮꾨룞湲� 泥섎━
-	 @RequestMapping(value="idCheck.bo", method= RequestMethod.POST,
-						produces="application/json; charset=UTF-8")
+	// 아이디 체크하기
+	 @RequestMapping(value="idCheck.bo", method= RequestMethod.POST, produces="application/json; charset=UTF-8")
 	 @ResponseBody
 	 public void idCheck(PrintWriter pw, MemberVO mVO, HttpServletRequest req, HttpServletResponse res) {
 		 int cnt = 0; 
-		 String mid = req.getParameter("id"); 
-		/* System.out.println(mid); */
+		 String mid = req.getParameter("id");
 		 cnt = mDAO.getIdCount(mid);
-		/* System.out.println(cnt); */
-		 pw.println("{"); 
-		 pw.println("\"cnt\": " + cnt); 
+		 pw.println("{");
+		 pw.println("\"cnt\": " + cnt);
 		 pw.println("}");
-	  
-		 return;
 	 }
-	
-	// �궡 �젙蹂� 蹂닿린
+	 
+	// 개인정보 페이지 열기
 	@RequestMapping("/mypage.bo")
 	public ModelAndView mypage(ModelAndView mv, MemberVO mVO, HttpSession session) {
 		String sid = (String) session.getAttribute("SID");	
@@ -107,8 +118,7 @@ public class Member {
 		mv.setViewName(view);
 		return mv;
 	}
-	
-	// �궡 �젙蹂� �닔�젙
+	// 개인정보 수정 페이지 열기
 	@RequestMapping("/mypageEdit.bo")
 	public ModelAndView mypageEdit(ModelAndView mv, MemberVO mVO, HttpSession session) {
 		String sid = (String) session.getAttribute("SID");	
@@ -118,13 +128,10 @@ public class Member {
 		mv.setViewName(view);
 		return mv;
 	}
-	
+	// 개인정보 수정하기
 	@RequestMapping("/mypageProc.bo")
 	public ModelAndView upMy(ModelAndView mv, MemberVO mVO, HttpSession session) {
 		String view = "MemberInfo/mypage";
-		System.out.println("mVO.mail : "+ mVO.getMail());
-		System.out.println("mVO.maddr : "+ mVO.getMaddr());
-		System.out.println("mVO.mtel : "+ mVO.getMtel());
 		String sid = (String) session.getAttribute("SID");
 		mVO.setMid(sid);
 		int cnt = mDAO.upMy(mVO);
@@ -138,11 +145,16 @@ public class Member {
 		
 	}
 	
-	// 회원페이지에서 스터디룸 예약내역 불러오는 함수
+	// 회원페이지에서 스터디룸 예약내역 불러오기
 	@RequestMapping("/goSRR.bo")
 	public ModelAndView goSRR(ModelAndView mv, HttpSession session) {
 		String id = (String)session.getAttribute("SID");
-		List<StudyRoomVO> list = studyDAO.selIdList(id);
+		List<StudyRoomVO> list = null;
+		try {
+			list = studyDAO.selIdList(id);
+		} catch(Exception e) {
+			
+		}
 		mv.addObject("LIST", list);
 		mv.setViewName("MemberInfo/StudyRoomReserve");
 		return mv;

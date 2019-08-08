@@ -29,7 +29,7 @@ import com.library.bo.service.StudyRoom.StudyRoomService;
 import com.library.bo.vo.StudyRoom.StudyRoomVO;
 
 @Controller
-@RequestMapping("/study")
+@RequestMapping("/StudyRoom")
 public class StudyRoom {
 	@Autowired
 	StudyRoomDAO studyDAO;
@@ -103,7 +103,7 @@ public class StudyRoom {
 		int cnt = studyDAO.reserveDate(vo);
 		// 작업 결과 확인해서 뷰 부르기
 		if(cnt == 1) {
-			mv.setViewName("redirect:goStudy.ti");
+			mv.setViewName("redirect:../MemberInfo/goSRR.bo");
 		} else {
 			if(roomCode == 1) {
 				mv.setViewName("StudyRoom/smallRoom");

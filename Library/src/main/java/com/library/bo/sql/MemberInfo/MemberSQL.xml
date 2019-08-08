@@ -13,13 +13,15 @@
 			m_id = #{mid}
 	</sql>
 	
-	<!-- 로그인 질의 명령 -->
 	<select id="loginCnt" resultType="int" parameterType="mVO">
-		<include refid="cntID" />
+		SELECT
+			count(*) cnt
+		FROM
+			member
+		WHERE
+			m_id = #{mid}
 			AND m_pw = #{mpw}
-			<!-- AND m_isshow = 'Y' -->
 	</select>
-	
 	<select id="idCnt" resultType="int" parameterType="String">
 		<include refid="cntID"/>
 	</select>

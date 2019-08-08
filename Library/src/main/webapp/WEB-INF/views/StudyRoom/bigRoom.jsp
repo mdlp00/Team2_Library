@@ -136,7 +136,7 @@
 </style>
 <script type="text/javascript">
 	$(document).ready(function() {
-		// [2] 예약 설정
+		// 예약 설정
 		// 날짜 선택 창 띄우기
 		$('#reserve').click(function(){
 			$('#reserveForm').fadeIn(500);
@@ -209,7 +209,8 @@
 </head>
 <body class="subpage">
 	<!-- Header -->
-	<jsp:include page="../Etc/listbar.jsp" />		
+	<jsp:include page="../Etc/listbar.jsp" />
+
 	<!-- Page content -->
 	<div class="w3-content" style="max-width:1100px; margin-top: 10px; padding-bottom: 1000px;">
 		<!-- 상단 사진 -->
@@ -278,7 +279,7 @@
 			<div class="w3-col m3">
 				<div class="w3-content w3-padding cal_ttl">
 					<div class="w3-row ftnbg">
-						<p id="small-header">중 간 방</p>
+						<p id="small-header">큰 방</p>
 						<ul id="small-neck">
 							<li class="li_border"><span class="spam">예약 시간 :</span><span>1시간 단위</span></li>
 							<li class="li_border"><span class="spam">예약 인원 :</span><span>최소 8명 ~ 최대 12명</span></li>
@@ -348,6 +349,7 @@
 			</div>
 		</div>
 	</div>
+
 	<!-- Footer -->
 	<jsp:include page="../Etc/footer.jsp" />
 </body>

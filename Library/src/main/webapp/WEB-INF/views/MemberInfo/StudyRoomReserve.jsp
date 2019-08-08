@@ -5,28 +5,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1" />
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/assets/js/jquery-3.4.1.min.js" ></script>
 <title>스터디룸 예약 목록</title>
-<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/assets/css/main.css" />
-<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/w3.css" />
-<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jquery-3.4.1.min.js"></script>
-	<!-- Scripts -->
-	<script src="${pageContext.request.contextPath}/resources/assets/js/jquery.min.js"></script>
-	<script src="${pageContext.request.contextPath}/resources/assets/js/jquery.scrolly.min.js"></script>
-	<script src="${pageContext.request.contextPath}/resources/assets/js/skel.min.js"></script>
-	<script src="${pageContext.request.contextPath}/resources/assets/js/util.js"></script>
-	<script src="${pageContext.request.contextPath}/resources/assets/js/main.js"></script>
 <style type="text/css">
 	body {
 		padding: 50px 200px 200px 400px;
 	}
-	.btn {
-		color: white;
-		text-decoration:none;
-	}
-	.btn1 {
-		font-size:1.7em;
-		font-weight: bold;
-	}
+	
 	.doc-title {
     	padding: 50px 0px 200px;
 		width: 900px;
@@ -34,11 +19,6 @@
 	}
 	.doc-title1 {
     	width: 500px;
-	}
-	.doc1 {
-		font-size: 0.9em;
-		width: 500px;
-		height: 30px;
 	}
 	
 	tr {
@@ -79,11 +59,6 @@ $(document).ready(function() {
 	</div>
 	<!-- 예약 조회 및 취소 -->
 	<table>
-		<c:if test="${empty LIST}">
-			<tr class="first">
-				<td class="dataEmpty first last td1" colspan="10">예약 내역이 없습니다.</td>
-			</tr>
-		</c:if>
 		<tr class="first">
 			<th>방</th>
 			<th>예약 날짜</th>
@@ -91,6 +66,11 @@ $(document).ready(function() {
 			<th>종료 시간</th>
 			<th>취소 하기</th>
 		</tr>
+		<c:if test="${empty LIST}">
+			<tr class="first">
+				<td class="dataEmpty first last td1" colspan="10">예약 내역이 없습니다.</td>
+			</tr>
+		</c:if>
 		<c:forEach var="data" items="${LIST}">
 			<tr>
 				<c:if test="${data.roomCode eq 1}">

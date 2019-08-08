@@ -12,16 +12,9 @@ public class MemberDAO {
 	SqlSessionTemplate sqlSession;
 	
 	public int getLogin(MemberVO mVO) {
-		System.out.println("dao - " + mVO.getMid() + " | " + mVO.getMpw());
-		
 		return sqlSession.selectOne("mSQL.loginCnt", mVO);
 	}
 
-	public int getLoginCnt(MemberVO mVO) {
-		int cnt = 0;
-		return cnt;
-	}
-	
 	public int getIdCount(String mid) {
 		return sqlSession.selectOne("mSQL.idCnt", mid);
 	}
