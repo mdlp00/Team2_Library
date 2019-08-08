@@ -39,7 +39,6 @@ public class BookInfo {
 	// 대출 내역 페이지로 이동
 	@RequestMapping("/goLoans.bo")
 	public ModelAndView goLoans(ModelAndView mv, HttpSession session) {
-		session.setAttribute("SID", "soo");
 		// 아이디 가져오기
 		String id = (String)session.getAttribute("SID");
 		// 대출 중인 도서 목록

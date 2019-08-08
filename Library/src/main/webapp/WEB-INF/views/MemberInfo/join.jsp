@@ -1,31 +1,29 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Generic - Intensify by TEMPLATED</title>
-<meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Join Page</title>
 <link rel="stylesheet" href="/bo/resources/assets/css/main.css" />
 <link type="text/css" rel="stylesheet" href="/bo/resources/css/w3.css" />
 <script type="text/javascript" src="/bo/resources/js/jquery-3.4.1.min.js"></script>
 	<!-- Scripts -->
-			<script src="/bo/resources/assets/js/jquery.min.js"></script>
-			<script src="/bo/resources/assets/js/jquery.scrolly.min.js"></script>
-			<script src="/bo/resources/assets/js/skel.min.js"></script>
-			<script src="/bo/resources/assets/js/util.js"></script>
-			<script src="/bo/resources/assets/js/main.js"></script>
-			
+	<script src="/bo/resources/assets/js/jquery.min.js"></script>
+	<script src="/bo/resources/assets/js/jquery.scrolly.min.js"></script>
+	<script src="/bo/resources/assets/js/skel.min.js"></script>
+	<script src="/bo/resources/assets/js/util.js"></script>
+	<script src="/bo/resources/assets/js/main.js"></script>
 <style type="text/css">
-	 body {
+	body {
 		margin: 0px;
-		padding: 5% 20% 20% 15%;
+		padding: 7% 20% 20% 15%;
 		text-align: center;
 	}
+	
 	.box {
-		background-color : #e66e63;
-		padding : 30px 0px 30px;
+		background-color: #e66e63;
+		padding: 30px 0px 30px;
 		text-align: left;
 	}
 	.color1 {
@@ -38,33 +36,30 @@
 	}
 	.b2 {
 		font-size: 17px;
-		width : 135px;
-		display : block;
-		text-align : right;
-		text-align: reft;
+		width: 140px;
+		display: block;
+		text-align: left;
 	}
-	
-	.it{
+	.it {
 		width: 100px;
 		height: 45;
 	}
-	
 	.it2 {
 		display: inline-block !important;
 		width: 75.5% !important;
 		height: 45px;
 	} 
-	
-	.itm{
+	.itm {
 		width: 70px;
 		height: 45px;
-	} 
-	
-	.obtn{
-		line-height: 200%;
 	}
-	
-	.in1{
+	.obtn {
+		line-height: 200%;
+		background-color: #e66e63;
+		color: white;
+		width: 95px;
+	}
+	.in1 {
 		height: 40px; 
 		width: 90px; 
 		background-color: #e66e63;
@@ -76,13 +71,10 @@
 <script type="text/javascript">
 	var idck = false;
 	$(document).ready(function(){
-		
-
 		// 취소 버튼 클릭
 		$('#reset').click(function(){
 			$(location).attr('href', '../Etc/main.bo');
 		});
-		
 		
 		$('pw').focusout(function(){
 			var spw = $('#pw').val();
@@ -180,67 +172,54 @@
 	});
 </script>
 </head>
-<body class="subpage">
-			<header id="header">
-							<a href="index.html" class="logo"> Daye Library</a>
-							<nav class="right">
-								<a href="#" class="button alt">Login</a>
-							</nav>
-			</header>
-		<!-- Header -->
-			<header id="header">
-				<a href="index.html" class="logo"> Daye Library</a>
-				<nav class="right">
-					<a href="#" class="button alt">Login</a>
-				</nav>
-			</header>
-
-	<div class="w3-col w3-center">
-		<h1 class="w3-container w3-text-white" style="font-weight: bold; font-size: 200%;"></h1>
-	</div> 
-	<div class="w3-col m3"><p></p></div>
-	<div class="w3-center w3-col m9"> 
-		<a style="text-decoration:none;"><h1>회원가입</h1> </a>
-			<div class="w3-container w3-card-4 w3-light-grey w3-margin">
-				<form method="POST" action="joinProc.bo" id="frm" name="frm"> 
-					<div class="w3-row b1">
-						<label class="b2" >아이디 입력 : </label>
-						<input class="it2" id="id" name="mid" type="text" placeholder="아이디 입력">
-					<div class="w3-button w3-center in1" id="reid" >중복확인</div>   
-					</div>
-					<div class="w3-row b1">
-						<label class="b2">비밀번호 입력 : </label>
-						<input class="w3-border it" id="pw" name="mpw" type="password" placeholder="비밀번호 입력">
-					</div>
-					<div class="w3-row b1">
-						<label class="b2" id="repw2">비밀번호  재입력 : </label>
-						<input class="w3-border it" id="repw" name="repw" type="password" placeholder="비밀번호 재입력">
-					</div>
-					<div class="w3-row b1">
-						<label class="b2">이름 입력 : </label>
-						<input class="w3-border it" id="name" name="mname" type="text" placeholder="이름 입력">
-					</div>
-					<div class="w3-row b1">
-						<label class="b2" style="margin-top: -10px;">생년월일 입력 : </label>
-						<input class="w3-border it" id="birth" name="mbirth" type="date" placeholder="생년월일 입력">
-					</div>   
-					<div class="w3-row b1">    
-						<label class="b2">주소 입력 :</label>
-						<input class="w3-border it" id="addr" name="maddr" type="text" placeholder="주소 입력">
-					</div>
-					<div class="w3-row b1">
-						<label class="b2">연락처 입력  :</label>
-						<input class="w3-border it" id="tel" name="mtel" type="text" placeholder="연락처 입력">
-					</div>
-					<div class="w3-row b1">
-						<label class="b2">이메일 입력 :</label>
-						<input class="w3-border itm" id="mail" name="mail" type="text" placeholder="이메일 입력">
-					</div>
-					<button class="w3-button w3-section w3-center obtn" style="background-color: #e66e63; color: white; width: 95px;" id="join">회원가입</button>
-					<button class="w3-button w3-section w3-ripple obtn" style="background-color:#e66e63; color: white; width: 95px;" id="reset">취소</button>
-				</form>
-			</div>
+<body>
+	<!-- Header -->
+	<header id="header">
+		<a href="${pageContext.request.contextPath}/StudyRoom/goMain.bo" class="logo">Daye Library</a>
+	</header>
+	
+	<!-- Body -->
+	<div class="w3-center w3-row"> 
+		<a style="text-decoration:none;"><h1>회원가입</h1></a>
+		<div class="w3-container w3-card-4 w3-light-grey w3-margin">
+			<form method="POST" action="joinProc.bo" id="frm" name="frm">
+				<div class="w3-row b1">
+					<label class="b2">아이디 입력 :</label>
+					<input class="it2" id="id" name="mid" type="text" placeholder="아이디 입력">
+				<div class="w3-button w3-center in1" id="reid">중복확인</div>
+				</div>
+				<div class="w3-row b1">
+					<label class="b2">비밀번호 입력 :</label>
+					<input class="w3-border it" id="pw" name="mpw" type="password" placeholder="비밀번호 입력">
+				</div>
+				<div class="w3-row b1">
+					<label class="b2" id="repw2">비밀번호 재입력 :</label>
+					<input class="w3-border it" id="repw" name="repw" type="password" placeholder="비밀번호 재입력">
+				</div>
+				<div class="w3-row b1">
+					<label class="b2">이름 입력 : </label>
+					<input class="w3-border it" id="name" name="mname" type="text" placeholder="이름 입력">
+				</div>
+				<div class="w3-row b1">
+					<label class="b2" style="margin-top: -10px; display: inline-block;">생년월일 입력 :</label>
+					<input class="w3-border it" style="display: inline-block; width: auto;" id="birth" name="mbirth" type="date" placeholder="생년월일 입력">
+				</div>
+				<div class="w3-row b1">
+					<label class="b2">주소 입력 :</label>
+					<input class="w3-border it" id="addr" name="maddr" type="text" placeholder="주소 입력">
+				</div>
+				<div class="w3-row b1">
+					<label class="b2">연락처 입력 :</label>
+					<input class="w3-border it" id="tel" name="mtel" type="text" placeholder="연락처 입력">
+				</div>
+				<div class="w3-row b1">
+					<label class="b2">이메일 입력 :</label>
+					<input class="w3-border itm" id="mail" name="mail" type="text" placeholder="이메일 입력">
+				</div>
+			</form>
+			<button class="w3-button w3-section w3-center obtn" id="join">회원가입</button>
+			<button class="w3-button w3-section w3-ripple obtn" id="reset">취소</button>
 		</div>
-		<div class="w3-col m3"><p></p></div>
+	</div>
 </body>
 </html>
