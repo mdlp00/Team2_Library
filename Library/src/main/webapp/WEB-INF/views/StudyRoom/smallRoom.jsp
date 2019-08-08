@@ -65,14 +65,6 @@
 	.times_time {
 		text-align: center; display: inline-block; width: 50px; height: 50px;
 	}
-	.btn {
-		color: white;
-		text-decoration:none;
-	}
-	.btn1 {
-		font-size:1.7em;
-		font-weight: bold;
-	}
 	.SSul {
 		height: 200px; padding-top: 10px;
 	}
