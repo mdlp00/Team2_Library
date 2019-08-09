@@ -8,12 +8,7 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class Views {
 	
-	//책검색
-	@RequestMapping("/BookSearch/search.bo")
-	public ModelAndView BookSerarch(ModelAndView mv) {
-		String view = "BookSearch/search.bo";
-		return mv;
-	}
+	
 	//이용시간 및 휴관일
 	@RequestMapping("/LibraryInfo/closeDay.bo")
 	public ModelAndView closeDay(ModelAndView mv) {

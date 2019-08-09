@@ -16,7 +16,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.library.bo.controller.BookInfo.*;
 import com.library.bo.dao.BookDAO;
 import com.library.bo.util.Paging;
-import com.library.bo.vo.BookVO;
+import com.library.bo.vo.BookInfo.BookVO;
 
 /**
  * 

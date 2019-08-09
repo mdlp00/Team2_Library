@@ -146,7 +146,6 @@
 	font-size: 14px !important;
 }
 </style>
-
 <script type="text/javascript">
 	$(document).ready(function() {
 
@@ -290,12 +289,12 @@
 	
 </script>
 </head>
-<body class="subpage">
+<body>
 	<!-- Header -->
 	<jsp:include page="../Etc/listbar.jsp" />
 	
 	<!-- 가운데 부분 시작 -->
-	<div class="content">
+	<div class="w3-content">
 		<div class="doc">
 			<div class="doc-head">
 				<div class="doc-title">

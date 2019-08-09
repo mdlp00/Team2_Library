@@ -7,7 +7,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.library.bo.dao.ManagerPage.*;
-import com.library.bo.vo.BookVO;
+import com.library.bo.vo.BookInfo.BookVO;
 
 /**
  * 

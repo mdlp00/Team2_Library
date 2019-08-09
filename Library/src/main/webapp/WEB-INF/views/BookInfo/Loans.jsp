@@ -47,41 +47,43 @@
 	<jsp:include page="../Etc/listbar.jsp" />
 	
 	<!-- Body -->
-	<div class="sub">
-		<div class="doc-title"><h2>[ 대출현황 ]</h2>
-			<div class="doc-title1"><h4>이용자 대출상태</h4>
-				<ul>
-					<li class="doc1">이용자 이름 : ${SID}</li> 
-					<li class="doc1">회원상태 : ${BOOK}권 대출중</li>
-				</ul>
+	<div class="w3-content">
+		<div class="sub">
+			<div class="doc-title"><h2>[ 대출현황 ]</h2>
+				<div class="doc-title1"><h4>이용자 대출상태</h4>
+					<ul>
+						<li class="doc1">이용자 이름 : ${SID}</li> 
+						<li class="doc1">회원상태 : ${BOOK}권 대출중</li>
+					</ul>
+				</div>
 			</div>
 		</div>
-	</div>
-	<!-- 대출 조회 및 연기 -->
-	<table>
-		<c:if test="${empty LIST}">
+		<!-- 대출 조회 및 연기 -->
+		<table>
 			<tr class="first">
-				<td class="dataEmpty first last td1" colspan="10">대출 내역이 없습니다.</td>
+				<th>책</th>
+				<th>대출 날짜</th>
+				<th>반납 예정</th>
+				<th>반납 날짜</th>
+				<th>연체 일수</th>
+				<th>연장 여부</th>
 			</tr>
-		</c:if>
-		<tr class="first">
-			<th>책</th>
-			<th>대출 날짜</th>
-			<th>반납 예정</th>
-			<th>반납 날짜</th>
-			<th>연체 일수</th>
-			<th>연장 여부</th>
-		</tr>
-		<c:forEach var="data" items="${LIST}">
-			<tr id="${data.rno}">
-				<th>${data.bookName}</th>
-				<th>${data.rentDate}</th>
-				<th>${data.rDay}</th>
-				<th>${data.returnDate}</th>
-				<th>${data.overdue} 일</th>
-				<th>${data.extended}</th>
-			</tr>
-		</c:forEach>
-	</table>
+			<c:if test="${empty LIST}">
+				<tr class="first">
+					<td class="dataEmpty first last td1" colspan="10">대출 내역이 없습니다.</td>
+				</tr>
+			</c:if>
+			<c:forEach var="data" items="${LIST}">
+				<tr id="${data.rno}">
+					<th>${data.bookName}</th>
+					<th>${data.rentDate}</th>
+					<th>${data.rDay}</th>
+					<th>${data.returnDate}</th>
+					<th>${data.overdue} 일</th>
+					<th>${data.extended}</th>
+				</tr>
+			</c:forEach>
+		</table>
+	</div>
 </body>
 </html>

@@ -42,7 +42,7 @@
 	<jsp:include page="../Etc/listbar.jsp" />
 
 	<!-- Body -->
-	<div class="w3-center w3-row">
+	<div class="w3-content w3-center w3-row">
 		<a style="text-decoration: none;"><h1>마이 페이지</h1></a>
 		<div class="w3-container w3-card-4 w3-light-grey w3-margin">
 			<div class="w3-row bbb1">

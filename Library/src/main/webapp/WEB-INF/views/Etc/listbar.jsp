@@ -47,7 +47,7 @@
 		// 자료검색 버튼
 		$(".search1").hide(); //하단
 		$("#search").click(function() {
-			location.href="${pageContext.request.contextPath}/BookSearch/search.bo";
+			location.href="${pageContext.request.contextPath}/book/bookSearchView.bo";
 		});
 		// 열린공간 버튼
 		$(".b1").hide(); //하단
@@ -97,8 +97,14 @@
 		$("#a3").click(function() {
 			if(sid){
 				$(".b3").toggle();
-				//내서재
-				//대출조회 및 연기
+				//예약현황
+				$('#myInfo1').click(function(){
+					location.href="${pageContext.request.contextPath}/bookinfo/goBookCh.bo";
+				});
+				//대출현황
+				$('#myInfo2').click(function(){
+					location.href="${pageContext.request.contextPath}/bookinfo/goLoans.bo";
+				});
 				//스터디룸 예약 확인
 				$('#myInfo3').click(function(){
 					location.href="${pageContext.request.contextPath}/MemberInfo/goSRR.bo";
@@ -127,19 +133,6 @@
 			alert('로그아웃 되었습니다.');
 			$(location).attr('href', '${pageContext.request.contextPath}/MemberInfo/logoutProc.bo' );
 		});
-		
-		// 매니저버튼
-	/*	if(sid == "manager01"){
-			$(location).attr('href', 'ManagerPage/' + target);			
-		}else{
-			$(location).attr('href', 'MemberInfo/' + target);
-		}
-		
-		// list버튼 넘기기
-		// 공지사항버튼넘기기
-	 	$('#bba1').click(function(){
-			alert('assdfsd');
-			$('.not1').attr('action','notice.bo'); */
 	});
 </script>
 </head>
@@ -185,8 +178,8 @@
 			</ul>
 			<li><a href="#" class="btn1" id="a3">마이라이브러리</a></li>
 			<ul>
-				<li class="b3"><a href="#" class="w3-button btn" id="myInfo1">내서재</a></li>
-				<li class="b3"><a href="#" class="w3-button btn" id="myInfo2">대출조회 및 연기</a></li>
+				<li class="b3"><a href="#" class="w3-button btn" id="myInfo1">예약현황</a></li>
+				<li class="b3"><a href="#" class="w3-button btn" id="myInfo2">대출현황</a></li>
 				<li class="b3"><a href="#" class="w3-button btn" id="myInfo3">스터디룸 예약 확인</a></li>
 				<li class="b3"><a href="#" class="w3-button btn" id="myInfo4">회원정보</a></li>
 			</ul>
