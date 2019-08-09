@@ -65,9 +65,9 @@ public class BookContoller {
 	  
 		// bookSearch.do?page=2&kind=b_name&search=jsp
 		  
-		String str_page = req.getParameter("page");
+		String str_page = req.getParameter("nowPage");
 		String kind 	= req.getParameter("kind");
-		String search 	= req.getParameter("search");
+		String search 	= req.getParameter("searched");
 		  
 		int nowPage = 1;
 		if(str_page!=null && !str_page.isEmpty())

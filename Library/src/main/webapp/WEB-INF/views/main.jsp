@@ -93,22 +93,13 @@
 	<!-- Three -->
 	<section id="three" class="wrapper">
 		<div class="inner flex flex-3">
-			<div class="flex-item box" id="studyRoom">
-				<div class="image fit">
-					<img src="/bo/resources/img/studyL_2.jpg" alt="" />
-				</div>
-				<div class="content">
-					<h3>StudyRoom</h3>
-					<p>Daye Library에서 서비스하는<br>고급 스터디룸 입니다.</p>
-				</div>
-			</div>
 			<div class="flex-item box">
 				<div class="image fit">
 					<img src="/bo/resources/img/studyM_1.jpg" alt="" />
 				</div>
 				<div class="content">
-					<h3>Adipiscing</h3>
-					<p>Morbi in sem quis dui placerat Pellentesque odio nisi, euismod pharetra lorem ipsum.</p>
+					<h3>도서관 정보</h3>
+					<p>Daye Library에 대하여<br>얼마나 아십니까?</p>
 				</div>
 			</div>
 			<div class="flex-item box">
@@ -116,8 +107,17 @@
 					<img src="/bo/resources/img/studyS_2.jpg" alt="" />
 				</div>
 				<div class="content">
-					<h3>Malesuada</h3>
-					<p>Nam dui mi, tincidunt quis, accu an porttitor, facilisis luctus que metus vulputate sem magna.</p>
+					<h3>도서 대출</h3>
+					<p>Daye Library에 저장된 지식을<br>맛 보실 수 있습니다.</p>
+				</div>
+			</div>
+			<div class="flex-item box" id="studyRoom">
+				<div class="image fit">
+					<img src="/bo/resources/img/studyL_2.jpg" alt="" />
+				</div>
+				<div class="content">
+					<h3>스터디룸</h3>
+					<p>Daye Library에서 서비스하는<br>고급 스터디룸 입니다.</p>
 				</div>
 			</div>
 		</div>

@@ -5,28 +5,30 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>예약목록</title>
+<title>예약 목록</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/assets/css/main.css" />
-<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/w3.css" />
-<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jquery-3.4.1.min.js"></script>
+<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/resources/assets/css/w3.css" />
 	<!-- Scripts -->
 	<script src="${pageContext.request.contextPath}/resources/assets/js/jquery.min.js"></script>
-	<script src="${pageContext.request.contextPath}/resources/assets/js/jquery.scrolly.min.js"></script>
-	<script src="${pageContext.request.contextPath}/resources/assets/js/skel.min.js"></script>
-	<script src="${pageContext.request.contextPath}/resources/assets/js/util.js"></script>
-	<script src="${pageContext.request.contextPath}/resources/assets/js/main.js"></script>
 <style type="text/css">
 	body {
 		padding: 50px 200px 200px 400px;
 	}
-	.btn {
-		color: white;
-		text-decoration:none;
+	tr {
+		display: table-row;
+		vertical-align: inherit;
+		border-color: inherit;
 	}
-	.btn1 {
-		font-size:1.7em;
-		font-weight: bold;
+	table thead th {
+		background: #f0f8fd;
 	}
+	table.bbs th.first {
+		border-left-width: 1px;
+	}
+	table th {
+		padding: 5px 0px;
+	}
+	
 	.doc-title {
     	padding: 50px 0px 200px;
 		width: 900px;
@@ -47,21 +49,6 @@
 	}
 	.w3-button:action {
 		box-shadow: 0px 0px 5px 3px gray inset;
-	}
-	
-	tr {
-		display: table-row;
-		vertical-align: inherit;
-		border-color: inherit;
-	}
-	table thead th {
-		background: #f0f8fd;
-	}
-	table.bbs th.first {
-		border-left-width: 1px;
-	}
-	table th {
-		padding: 5px 0px;
 	}
 </style>
 <script type="text/javascript">

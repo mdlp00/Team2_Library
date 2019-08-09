@@ -17,7 +17,6 @@
  * 			2019.00.00		rentAdd 제작					작성자 : 양희준
  * 			2019.00.00		rentView 제작					작성자 : 양희준
  * 			2019.00.00		returnBtn 제작				작성자 : 양희준
- * 			2019.00.00		rentBtn 제작					작성자 : 양희준
  *
  -->
  
@@ -54,7 +53,7 @@
 	<update id="rentBtn" parameterType="int">
 		UPDATE reservation_book SET reserve_isshow = 'N'
 		WHERE reserve_no = #{reserve_no}
-	</update>
+   	</update>
    	
    	<!-- 대여 리스트 추가 명령-->
    	<insert id="rentAdd" parameterType="ManagerReserveVO">
@@ -84,10 +83,14 @@
 		WHERE rent_no = #{rent_no}
    	</update>
    	
-   	<!-- 대여  질의 명령 -->
-	<update id="rentBtn" parameterType="int">
-		UPDATE reservation_book SET reserve_isshow = 'N'
-		WHERE reserve_no = #{reserve_no}
-	</update>
- </mapper>
+   	<!-- 반납 리스트에 추가하는 명령 -->
+   	<insert id="returnListAdd" parameterType="int">
+		insert into RETURN(return_no, rent_no, return_date)
+		values((SELECT NVL(MAX(return_no),0)+1 FROM RETURN),#{rent_no},sysdate)
+   	</insert>
+   	
+   	<!-- 예약 가능으로 바꾸는 명령-->
+   	
+   	
+ </mapper> 
  

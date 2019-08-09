@@ -7,26 +7,23 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>대여 목록</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/assets/css/main.css" />
-<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/w3.css" />
-<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jquery-3.4.1.min.js"></script>
-	<!-- Scripts -->
-	<script src="${pageContext.request.contextPath}/resources/assets/js/jquery.min.js"></script>
-	<script src="${pageContext.request.contextPath}/resources/assets/js/jquery.scrolly.min.js"></script>
-	<script src="${pageContext.request.contextPath}/resources/assets/js/skel.min.js"></script>
-	<script src="${pageContext.request.contextPath}/resources/assets/js/util.js"></script>
-	<script src="${pageContext.request.contextPath}/resources/assets/js/main.js"></script>
+<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/resources/assets/css/w3.css" />
 <style type="text/css">
 	body {
 		padding: 50px 200px 200px 400px;
 	}
-	.btn {
-		color: white;
-		text-decoration:none;
+	tr {
+		display: table-row;
+		vertical-align: inherit;
+		border-color: inherit;
 	}
-	.btn1 {
-		font-size:1.7em;
-		font-weight: bold;
+	table thead th {
+		background: #f0f8fd;
 	}
+	table.bbs th.first {
+		border-left-width: 1px;
+	}
+	
 	.doc-title {
     	padding: 50px 0px 200px;
 		width: 900px;
@@ -40,23 +37,9 @@
 		width: 500px;
 		height: 30px;
 	}
-	
-	tr {
-		display: table-row;
-		vertical-align: inherit;
-		border-color: inherit;
-	}
-	table thead th {
-		background: #f0f8fd;
-	}
-	table.bbs th.first {
-		border-left-width: 1px;
-	}
 </style>
 <script type="text/javascript">
-$(document).ready(function() {
-	
-});
+
 </script>
 </head>
 <body>
