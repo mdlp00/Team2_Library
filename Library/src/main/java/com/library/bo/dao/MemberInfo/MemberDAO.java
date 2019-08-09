@@ -1,5 +1,24 @@
 package com.library.bo.dao.MemberInfo;
 
+/**
+ * 
+ * @author	김환진
+ * @since	2019.08.01
+ * @version	1.0
+ * @see
+ * 			변경 이력 관리
+ * 			2019.08.01		MemberDAO 클래스 제작			작성자 : 김환진
+ * 			2019.08.01		Login 함수 제작					작성자 : 김환진
+ * 			2019.08.01		LoginCnt 함수 제작				작성자 : 김환진
+ * 			2019.08.01		IdCount 함수 제작				작성자 : 김환진
+ * 			2019.08.02		SelMemb 함수 제작				작성자 : 김환진
+ * 			2019.08.02		insertMember 함수 제작			작성자 : 김환진
+ * 			2019.08.02		addMember 함수 제작				작성자 : 김환진
+ * 			2019.08.05		getMyProc 함수 제작				작성자 : 김환진
+ * 			2019.08.05		upMy 함수 제작					작성자 : 김환진
+ * 			
+ */
+
 import java.util.List;
 
 import org.mybatis.spring.SqlSessionTemplate;
@@ -33,12 +52,10 @@ public class MemberDAO {
 		return sqlSession.insert("mSQL.addMember", mVO);
 	}
 	
-	// �쉶�썝�젙蹂� 蹂닿린
 	public MemberVO getMyProc(String mid) {
 		return sqlSession.selectOne("mSQL.myProc", mid);
 	}
-	
-	// �쉶�썝 �젙蹂� �닔�젙�븯�뒗 �븿�닔
+
 	public int upMy(MemberVO mVO) {
 		return sqlSession.update("mSQL.upMy", mVO);
 	}

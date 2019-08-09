@@ -2,7 +2,26 @@
 <!DOCTYPE mapper
 	PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 			"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-			
+
+<!-- 
+ * 
+ * @author	김환진
+ * @since	2019.08.01
+ * @version	1.0
+ * @see
+ * 			변경 이력 관리
+ * 			2019.08.01		MemberSQL.xml 제작		작성자 : 김환진
+ * 			2019.08.01		loginCnt 제작			작성자 : 김환진
+ * 			2019.08.01		idCnt 제작				작성자 : 김환진
+ * 			2019.08.01		selMemb 제작				작성자 : 김환진
+ * 			2019.08.02		insertMember 제작		작성자 : 김환진
+ * 			2019.08.02		addMember 제작			작성자 : 김환진
+ * 			2019.08.02		totalCnt 제작			작성자 : 김환진
+ * 			2019.08.05		myProc 제작				작성자 : 김환진
+ * 			2019.08.05		upMy 제작				작성자 : 김환진
+ *
+ -->
+ 		
 <mapper namespace="mSQL">
 	<sql id="cntID">
 		SELECT

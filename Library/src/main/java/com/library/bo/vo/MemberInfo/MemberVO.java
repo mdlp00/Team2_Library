@@ -1,5 +1,17 @@
 package com.library.bo.vo.MemberInfo;
 
+
+/**
+ * 
+ * @author	김환진
+ * @since	2019.08.01
+ * @version	1.0
+ * @see
+ * 			변경 이력 관리
+ * 			2019.08.01		MemberVO 클래스 제작		작성자 : 김환진
+ */
+
+
 import java.util.Date;
 
 public class MemberVO {
