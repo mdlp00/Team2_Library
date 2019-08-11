@@ -98,13 +98,25 @@
 			if(sid){
 				$(".b3").toggle();
 				//예약현황
-				$('#myInfo1').click(function(){
-					location.href="${pageContext.request.contextPath}/bookinfo/goBookCh.bo";
-				});
+				if(sid == 'manager01'){
+					$('#myInfo1').click(function(){
+						location.href="${pageContext.request.contextPath}/ManagerPage/reservationList.bo";
+					});					
+				}else{
+					$('#myInfo1').click(function(){
+						location.href="${pageContext.request.contextPath}/bookinfo/goBookCh.bo";
+					});
+				}
 				//대출현황
-				$('#myInfo2').click(function(){
-					location.href="${pageContext.request.contextPath}/bookinfo/goLoans.bo";
-				});
+				if(sid == 'manager01'){
+					$('#myInfo2').click(function(){
+						location.href="${pageContext.request.contextPath}/ManagerPage/rentView.bo";
+					});
+				}else{
+					$('#myInfo2').click(function(){
+						location.href="${pageContext.request.contextPath}/bookinfo/goLoans.bo";
+					});
+				}
 				//스터디룸 예약 확인
 				$('#myInfo3').click(function(){
 					location.href="${pageContext.request.contextPath}/MemberInfo/goSRR.bo";
@@ -128,6 +140,12 @@
 		$('#lin').click(function(){
 			$(location).attr('href', '${pageContext.request.contextPath}/MemberInfo/login.bo');
 		});
+		
+		// 매니저 버튼 로그인시
+		$('#mlin').click(function(){
+			$(location).attr('href', '${pageContext.request.contextPath}/ManagerPage/loginForm.bo');
+		});		
+		
 		// 로그아웃 버튼 클릭시
 		$('#lout').click(function(){
 			alert('로그아웃 되었습니다.');
@@ -144,11 +162,14 @@
 		</nav>
 		<a href="${pageContext.request.contextPath}/StudyRoom/goMain.bo" class="logo">Daye Library</a>
 		<nav class="right">
-			<c:if test="${not empty SID}">
+			<c:if test="${not empty SID && SID ne 'manager01'}">
 				<h4 style='display:inline'>${SID} 님</h4>
 			</c:if>
 			<c:if test="${SID eq 'manager01'}">
-			<button class="manabtn" id="manabtn" name="manabtn"><span><h3>Manager</h3></span></button>
+				<h4 style='display:inline; color : red;'>${SID} 님</h4>
+			</c:if>
+			<c:if test="${empty SID}">
+			<a class="button alt" id="mlin">Manager Log In</a>
 			</c:if>
 			<a class="button alt" id="lin">Log In</a>
 		</nav>
@@ -180,8 +201,10 @@
 			<ul>
 				<li class="b3"><a href="#" class="w3-button btn" id="myInfo1">예약현황</a></li>
 				<li class="b3"><a href="#" class="w3-button btn" id="myInfo2">대출현황</a></li>
+			<c:if test="${SID ne 'manager01'}">
 				<li class="b3"><a href="#" class="w3-button btn" id="myInfo3">스터디룸 예약 확인</a></li>
 				<li class="b3"><a href="#" class="w3-button btn" id="myInfo4">회원정보</a></li>
+			</c:if>
 			</ul>
 		</ul>
 		<ul class="actions vertical">

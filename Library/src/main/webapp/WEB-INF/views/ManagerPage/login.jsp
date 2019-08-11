@@ -94,7 +94,7 @@ $(document).ready(function(){
 						<div style="display: inline-block; "></div>
 						<div style="display: inline-block;">
 							<div style="color: gray;">아이디</div>
-							<input type="text" class="inp" id="id" name="id" />
+							<input type="text" class="inp" id="mnid" name="mnid" />
 						</div>
 					</div>
 					<div><p></p></div>
@@ -102,7 +102,7 @@ $(document).ready(function(){
 						<div style="display: inline-block; width: 15px;"></div>
 						<div style="display: inline-block;">
 							<div style="color: gray;">비밀번호</div>
-							<input type="password" class="inp" id="pw" name="pw" />
+							<input type="password" class="inp" id="mnpw" name="mnpw" />
 						</div>
 					</div>
 					<div><p></p></div>
