@@ -126,59 +126,7 @@
 <script type="text/javascript">
 
 	$(document).ready(function(){
-	
-	var isSearch = '${isSearch}';
-	if('${PAGE.endPage}' == '${PAGE.pageGroup}'){
-		$('#pbtn').toggleClass("btn btn-light btn-secondary text-center");
-		$('#pbtn').text("=");
-		$('#pbtn').css('width', '50px');
-	} else {
-		$('#pbtn').click(function(){
-			var strPage = '${PAGE.startPage - 1}';
-			if(!isSearch){
-				$('#nowPage').val(strPage);
-				$('#frm').submit();
-			} else {
-				$('#cPage').val(strPage);
-				$('#srch').submit();
-			}
-		});
-	}
-	
-	
-	if('${PAGE.endPage}' == '${PAGE.totalPage}'){
-		$('#nbtn').toggleClass("btn btn-light btn-secondary text-center");
-		$('#nbtn').text("=");
-		$('#nbtn').css('width', '50px');
-	} else {
-		$('#nbtn').click(function(){
-			var strPage = '${PAGE.endPage + 1}';
-			if(isSearch){
-				$('#cPage').val(strPage);
-				$('#srch').submit();
-			} else {
-				$('#nowPage').val(strPage);
-				$('#frm').submit();
-			}
-		});
-	}
-	
-	$('.cbtn').click(function(){
-		var strPage = $(this).text();
-		var tmp = '${PAGE.nowPage}';
-		if(strPage != tmp){
-			if(!isSearch){
-				$('#nowPage').val(strPage);
-				$('#frm').submit();			
-			} else {
-				$('#cPage').val(strPage);
-				$('#srch').submit();
-			}
-		} else {
-			return;
-		}
-	});
-	
+		
 	// 게시판 인덱스 뽑기
 	$('.first').click(function(){
 		var snno = $(this).attr('id');
@@ -337,23 +285,7 @@
 				</div>
 			</c:forEach>
 		</div> --%>
-			<div class="w3-row">
-				<div class="row">
-					<div class="shadow pagination btn-group 
-								justify-content-center mt-3 mx-auto px-0">
-						<div class="btn btnW50" id="pbtn"style="display:inline-block; color:black;">prev</div>
-						<c:forEach var="page" begin="${PAGE.startPage}" end="${PAGE.endPage}">
-							<c:if test="${page ne PAGE.nowPage}">
-								<div class="btn  cbtn"style="display:inline-block; color:black;">${page}</div>
-							</c:if>
-							<c:if test="${page eq PAGE.nowPage}">
-								<div class=" btn  cbtn"style="display:inline-block; color:black;">${page}</div>
-							</c:if>
-						</c:forEach>
-						<div class="btn btnW50" id="nbtn"style="display:inline-block; color:black;">next</div>
-					</div>
-				</div>
-			</div>
+
 			<div class="" >
 				<!-- 하단 정렬 시 margin-top 입력 -->
 				<fieldset class="fs1">

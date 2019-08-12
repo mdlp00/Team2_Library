@@ -23,14 +23,23 @@ public class NoticeDAO {
 		return sqlSession.selectList("nSQL.selectBar", pUtil);
 	}
 	
-	//게시물 몇개있는지 보여줌 x
-		public int selTotalCnt() {
-			return sqlSession.selectOne("nSQL.selTotalCnt");
-		}
+	//게시물 몇개있는지 보여줌
+	public int selTotalCnt() {
+		return sqlSession.selectOne("nSQL.selTotalCnt");
+	}
 	//공지사항 디테일
 		public NoticeVO DetailMain(int rno) {
 			return sqlSession.selectOne("nSQL.DetailMain",rno);
 		}
+		
+	// 검색된 게시물 수 조회
+	public int searchTotal(String word) {
+		return sqlSession.selectOne("nSQL.searchTotal", word);
+	}
+	public List<NoticeVO> noticeSearch(){
+		return sqlSession.selectList("nSQL.noticeSearch");
+	}
+	
 	// 검색데이터 조회 전담
 	public List<NoticeVO> searchList(HashMap map){
 		return sqlSession.selectList("nSQL.searchList", map);

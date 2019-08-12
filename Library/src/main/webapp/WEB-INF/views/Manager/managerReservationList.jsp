@@ -124,6 +124,7 @@ function send(f){
 			<input type="hidden" name="b_no" id="b_no">
 		</form>
 	
+<div class="w3-content">
 	<div class="sub">
 		<div class="doc-title"><h2>[ 예약리스트현황 ]</h2>
 			<div class="doc-title1"><h4>이용자 예약리스트</h4>
@@ -164,8 +165,6 @@ function send(f){
 			</tr>
 		</c:if>
 	</table>
-	<form method="POST" action="cancelReserveBook.bo" id="frm" name="frm">
-		<input type="hidden" id="rno" name="rno">
-	</form>
+</div>
 </body>
 </html>

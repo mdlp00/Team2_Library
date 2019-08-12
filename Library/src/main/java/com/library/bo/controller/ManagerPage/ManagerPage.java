@@ -177,11 +177,11 @@ public class ManagerPage {
 	   
 	   
 	   System.out.println(rent_no);
-	   // 대여 리스트에서 제거
-	   manaDAO.returnBtn(rent_no);
-	   
 	   // 반납 리스트 추가
 	   manaDAO.returnListAdd(rent_no);
+	   
+	   // 대여 리스트에서 제거
+	   manaDAO.returnBtn(rent_no);
 	   
 	   // 책 예약 활성화
 	   //manaDAO

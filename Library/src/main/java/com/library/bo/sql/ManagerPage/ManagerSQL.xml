@@ -29,8 +29,8 @@
 	FROM
 			Manager
 	WHERE
-			manager_id = #{id}
-            AND manager_pw = #{pw}         
+			manager_id = #{mnid}
+            AND manager_pw = #{mnpw}         
    </select>
    
    	<!-- 도서 예약목록 가져오는 질의명령 -->
@@ -85,8 +85,9 @@
    	
    	<!-- 반납 리스트에 추가하는 명령 -->
    	<insert id="returnListAdd" parameterType="int">
-		insert into RETURN(return_no, rent_no, return_date)
-		values((SELECT NVL(MAX(return_no),0)+1 FROM RETURN),#{rent_no},sysdate)
+		insert into RETURN(return_no, rent_no, return_date, m_no)
+		values((SELECT NVL(MAX(return_no),0)+1 FROM RETURN),#{rent_no},sysdate,
+		(select m_no from rent where rent_no = #{rent_no}))
    	</insert>
    	
    	<!-- 예약 가능으로 바꾸는 명령-->

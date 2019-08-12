@@ -7,14 +7,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>[관리자]대여목록</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/assets/css/main.css" />
-<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/w3.css" />
-<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jquery-3.4.1.min.js"></script>
-	<!-- Scripts -->
-	<script src="${pageContext.request.contextPath}/resources/assets/js/jquery.min.js"></script>
-	<script src="${pageContext.request.contextPath}/resources/assets/js/jquery.scrolly.min.js"></script>
-	<script src="${pageContext.request.contextPath}/resources/assets/js/skel.min.js"></script>
-	<script src="${pageContext.request.contextPath}/resources/assets/js/util.js"></script>
-	<script src="${pageContext.request.contextPath}/resources/assets/js/main.js"></script>
+<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/resources/assets/css/w3.css" />
+
 <style type="text/css">
 	body {
 		padding: 50px 200px 200px 400px;
@@ -92,7 +86,8 @@ $(document).ready(function() {
 		<form method="post" action="#" name="frm" id="frm">
 			<input type="hidden" name="rent_no" id="rent_no">
 		</form>
-	
+
+<div class="w3-content">
 	<div class="sub">
 		<div class="doc-title"><h2>[ 대여리스트현황 ]</h2>
 			<div class="doc-title1"><h4>이용자 대여리스트</h4>
@@ -133,6 +128,6 @@ $(document).ready(function() {
 			</tr>
 		</c:if>
 	</table>
-
+</div>
 </body>
 </html>

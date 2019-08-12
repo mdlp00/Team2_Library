@@ -24,15 +24,9 @@
 
 		</insert>
 		
-		<select id="selectBar" resultType="nVO" parameterType="pUtil">
+		<select id="selectBar" resultType="nVO">
 			
-		SELECT
-       		 rno, no, title, name, ndate, views, body
-		FROM(
-        SELECT
-            ROWNUM rno, no, title, name, ndate, views, body
-        FROM
-                    (select
+                    select
                       n_no no, n_title title, m.manager_name name, 
                       to_char(n_date, 'yyyy/mm/dd') ndate, 
                       n_views views,n_body body
@@ -46,12 +40,7 @@
                         n_isshow = 'Y'
                     ORDER BY
                         n_date DESC
-                        )
-   			 )
-	 WHERE
-   			 rno BETWEEN #{startContent} and #{endContent}
-			
-			
+                        					
 		</select>
 		
 		<select id="selTotalCnt" resultType="int">

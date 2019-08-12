@@ -9,12 +9,6 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/assets/css/main.css" />
 <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/w3.css" />
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jquery-3.4.1.min.js"></script>
-	<!-- Scripts -->
-			<script src="${pageContext.request.contextPath}/resources/assets/js/jquery.min.js"></script>
-			<script src="${pageContext.request.contextPath}/resources/assets/js/jquery.scrolly.min.js"></script>
-			<script src="${pageContext.request.contextPath}/resources/assets/js/skel.min.js"></script>
-			<script src="${pageContext.request.contextPath}/resources/assets/js/util.js"></script>
-			<script src="${pageContext.request.contextPath}/resources/assets/js/main.js"></script>
 			
 <style type="text/css">
 
@@ -151,47 +145,40 @@ $(function(){
 </script>
 </head>
 <body>
-<header id="header">
-		<nav class="left">
-			<a href="#menu"><span>Menu</span></a>
-		</nav>
-		<a href="index.jsp" class="logo">Daye Library</a>
-		<nav class="right">
-			<a href="#" class="button alt">Log in</a>
-		</nav>
-	</header>
 
-<div>
-	<div class="w3-col m3"><p></p></div>
-	<form method="POST" action="boardWriteProc.s5" id="frm" name="frm"
-			class="w3-col m6">
-		<input type="hidden" name="writer" id="writer" value="${name}">
-		<br><br>
-		<div class="w3-container w3-card w3-padding-2">
-		<div style="color: black; text-align: left;"><h4>공지사항 작성</h4></div>
-		
-		
-		
-		<span class="w3-col m4 w3-align-right">I D : </span>
-		<input type="text" id="id" name="id" class="w3-col m8 w3-input w3-border" value="${name}" readonly >
+<!-- Header -->
+<jsp:include page="../Etc/listbar.jsp" />
 
-		<span class="w3-col m4 w3-align-right">제목 : </span>
-		<input type="text" id="title" name="title" class="w3-col m8 w3-input w3-border">
-
-		<span class="w3-col m4 w3-align-right">본 문 : </span>
-		<textarea id="body" name="body" class="w3-col m8 w3-input w3-border" 
-					rows="10" style="resize: none;"></textarea>
-					
-		<div class="w3-col w3-center">
-			<div class="w3-btn" style=" background: #ed4e42; color:white;">취소</div>
-			<div class="w3-btn" style=" background: #ed4e42; color:white;">저장</div>
-			
+<div class="w3-content">
+		<div class="w3-col m3"><p></p></div>
+		<form method="POST" action="boardWriteProc.s5" id="frm" name="frm"
+				class="w3-col m6">
+			<input type="hidden" name="writer" id="writer" value="${name}">
 			<br><br>
-		</div>
-		</div>
-	</form>
-		<jsp:include page="../Etc/footer.jsp"></jsp:include>
-</div>
+			<div class="w3-container w3-card w3-padding-2">
+			<div style="color: black; text-align: left;"><h4>공지사항 작성</h4></div>
+			
+			
+			
+			<span class="w3-col m4 w3-align-right">I D : </span>
+			<input type="text" id="id" name="id" class="w3-col m8 w3-input w3-border" value="${name}" readonly >
 	
+			<span class="w3-col m4 w3-align-right">제목 : </span>
+			<input type="text" id="title" name="title" class="w3-col m8 w3-input w3-border">
+	
+			<span class="w3-col m4 w3-align-right">본 문 : </span>
+			<textarea id="body" name="body" class="w3-col m8 w3-input w3-border" 
+						rows="10" style="resize: none;"></textarea>
+						
+			<div class="w3-col w3-center">
+				<div class="w3-btn" style=" background: #ed4e42; color:white;">취소</div>
+				<div class="w3-btn" style=" background: #ed4e42; color:white;">저장</div>
+				
+				<br><br>
+			</div>
+			</div>
+		</form>
+</div>
+			<jsp:include page="../Etc/footer.jsp"></jsp:include>
 </body>
 </html>
