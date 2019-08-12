@@ -19,8 +19,8 @@ public class NoticeDAO {
 	}
 	
 	//공지사항 조회
-	public List<NoticeVO> selectBar(PageUtil pUtil) {
-		return sqlSession.selectList("nSQL.selectBar", pUtil);
+	public List<NoticeVO> selectBar() {
+		return sqlSession.selectList("nSQL.selectBar");
 	}
 	
 	//게시물 몇개있는지 보여줌
@@ -35,9 +35,6 @@ public class NoticeDAO {
 	// 검색된 게시물 수 조회
 	public int searchTotal(String word) {
 		return sqlSession.selectOne("nSQL.searchTotal", word);
-	}
-	public List<NoticeVO> noticeSearch(){
-		return sqlSession.selectList("nSQL.noticeSearch");
 	}
 	
 	// 검색데이터 조회 전담

@@ -1,24 +1,19 @@
-
-
-
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
  <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8" />
+<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Notice Main Page</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/assets/css/main.css" />
-<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/w3.css" />
-<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jquery-3.4.1.min.js"></script>
+<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/resources/assets/css/w3.css" />
 	<!-- Scripts -->
-			<script src="${pageContext.request.contextPath}/resources/assets/js/jquery.min.js"></script>
-			<script src="${pageContext.request.contextPath}/resources/assets/js/jquery.scrolly.min.js"></script>
-			<script src="${pageContext.request.contextPath}/resources/assets/js/skel.min.js"></script>
-			<script src="${pageContext.request.contextPath}/resources/assets/js/util.js"></script>
-			<script src="${pageContext.request.contextPath}/resources/assets/js/main.js"></script>
-			
+	<script src="${pageContext.request.contextPath}/resources/assets/js/jquery.min.js"></script>
+	<script src="${pageContext.request.contextPath}/resources/assets/js/jquery.scrolly.min.js"></script>
+	<script src="${pageContext.request.contextPath}/resources/assets/js/skel.min.js"></script>
+	<script src="${pageContext.request.contextPath}/resources/assets/js/util.js"></script>
+	<script src="${pageContext.request.contextPath}/resources/assets/js/main.js"></script>
 <style type="text/css">
 
 .btn {
@@ -133,100 +128,62 @@ table.bbs tr.notice {
 	}
 </style>
 <script type="text/javascript">
-
-
-
 </script>
-
 </head>
 <body>
-	 <jsp:include page="../Etc/listbar.jsp"/> 
-
-	<header id="header">
-		<nav class="left">
-			<a href="#menu"><span>Menu</span></a>
-		</nav>
-		<a href="index.jsp" class="logo">Daye Library</a>
-		<nav class="right">
-			<a href="#" class="button alt">Log in</a>
-		</nav>
-	</header>
-
-
-	<div class="doc-body" id="contentArea">
-		<div class="body">
-
-			<form action="notice.bo" id="frm" name="frm">
-				<input type="hidden" name="nowpage" id="nowPage">
-				<input type="hidden" name="bno" id="bno">
-				<input type="hidden" name="writer" id="writer">
-				<input type="hidden" name="nno" id="nno">
-			</form>
-
-<!-- 
-					<div class="infodesk">
-
-						<span class="bbs-result">총 게시물 : <b> </b>
-						</span> <select id="rowCount" name="rowCount" class="selectmenu"
-							style="width: 110px;" title="보기 개수 선택">
-
-
-							<option value="10" selected="selected">10개씩 보기</option>
-
-							<option value="20">20개씩 보기</option>
-
-							<option value="30">30개씩 보기</option>
-
-							<option value="40">40개씩 보기</option>
-
-							<option value="50">50개씩 보기</option> -->
-							
-				<div class="table-wrap">
-					<table class="bbs center" summary="일반 게시판">
-					<div class="b1">
-						<caption><h3>공지사항</h3></caption>
-					</div>
-						<colgroup>
-						
-							<col width="10%" class="col1">
-							<col class="col2">
-							<col width="12%" class="col3">
-							<col width="10%" class="col4">
-							<col width="10%" class="col5">
-							<col width="10%" class="col6">
-						</colgroup>
-						
-						<thead>
-							<tr class="first" id="kind" name="kind">
-							
-								<th vlaue="no"> 번호</th>
-								<th value="title"> 제목</th>
-								<th value="manager"> 작성자</th>
-								<th value="date"> 작성일</th>
-								<th value="views"> 조회수</th>
-						</thead>
-						 
-						 
-						 
-						<tbody id="board_tbody">
-						
-							<tr class="first">
-								<td class="td1" >${NVO.no}</td>
-								<td class="td2"style="text-align: left;">${NVO.title}</td>
-									<td class="td3">${NVO.name}</td>
-									<td class="td4">${NVO.ndate}</td>
-									<td class=" td5">${NVO.views}</td>
-									<td class="file mmm1 last td6"><i class="fa fa-floppy-o"></i>
-								</td>
-							</tr>
-						</tbody>						
-					</table>	
-					<div class="w3-container w3-card w3-padding-24">
-					<div style="color: black; text-align: left;"><h4> ${NVO.body}</h4></div>
-					</div>
-				</div>
-			
-
-		<jsp:include page="../Etc/footer.jsp"></jsp:include>
+	<!-- Header -->
+	<jsp:include page="../Etc/listbar.jsp" />
+	
+	<!-- 화면에 보이지 않음 / 데이터넘겨주는 용도  -->
+	<form action="notice.bo" id="frm" name="frm">
+		<input type="hidden" name="nowpage" id="nowPage">
+		<input type="hidden" name="bno" id="bno">
+		<input type="hidden" name="writer" id="writer">
+		<input type="hidden" name="nno" id="nno">
+	</form>
+	
+	<!-- Body -->
+	<div class="w3-content">
+		<div class="table-wrap">
+			<table class="bbs center" summary="일반 게시판">
+			<div class="b1">
+				<caption><h3>공지사항</h3></caption>
+			</div>
+				<colgroup>
+					<col width="10%" class="col1">
+					<col class="col2">
+					<col width="12%" class="col3">
+					<col width="10%" class="col4">
+					<col width="10%" class="col5">
+					<col width="10%" class="col6">
+				</colgroup>
+				<thead>
+					<tr class="first" id="kind" name="kind">
+						<th>번호</th>
+						<th>제목</th>
+						<th>작성자</th>
+						<th>작성일</th>
+						<th>조회수</th>
+					</tr>
+				</thead>
+				<tbody id="board_tbody">
+					<tr class="first">
+						<td class="td1" >${NVO.no}</td>
+						<td class="td2"style="text-align: left;">${NVO.title}</td>
+						<td class="td3">${NVO.name}</td>
+						<td class="td4">${NVO.ndate}</td>
+						<td class=" td5">${NVO.views}</td>
+						<td class="file mmm1 last td6"><i class="fa fa-floppy-o"></i></td>
+					</tr>
+				</tbody>						
+			</table>	
+			<div class="w3-container w3-card w3-padding-24">
+			<div style="color: black; text-align: left;"><h4> ${NVO.body}</h4></div>
+			</div>
+		</div>
+	</div>
+				
+	<!-- Footer -->
+	<jsp:include page="../Etc/footer.jsp" />
 </body>
 </html>

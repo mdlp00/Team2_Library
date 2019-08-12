@@ -26,34 +26,15 @@ NoticeDAO nDAO;
 	
 	// 공지사항
 	@RequestMapping("/notice.bo")
-	public ModelAndView notice(ModelAndView mv, HttpServletRequest req) {
-		String strPage = req.getParameter("nowPage");
-		int nowPage = 1;
-
-		if (strPage != null) {
-			try {
-				nowPage = Integer.parseInt(strPage);
-			} catch (Exception e) {
-				nowPage = 1;
-			}
-			
-		}
-
-		int totalCount = nDAO.selTotalCnt();
-		
-		PageUtil pUtil = new PageUtil(nowPage, totalCount);
-		ArrayList<NoticeVO> list = (ArrayList<NoticeVO>) nDAO.selectBar(pUtil);
-
+	public ModelAndView notice(ModelAndView mv) {
+		ArrayList<NoticeVO> list = (ArrayList<NoticeVO>) nDAO.selectBar();
 
 		mv.addObject("LIST", list); // LIST -> jsp에서 사용
-		mv.addObject("PAGE", pUtil);
-		//mv.addObject("isSearch", "Y");
-
 		String view = "LibraryInfo/notice";
 		mv.setViewName(view);
 		return mv;
 	}
-	
+	// 상세 공지사항
 	@RequestMapping("/noticeMain.bo")
 	public ModelAndView notiveMain(ModelAndView mv, HttpServletRequest req) {
 		NoticeVO nVO = null;
@@ -75,6 +56,15 @@ NoticeDAO nDAO;
 		mv.setViewName(view);
 		return mv;
 	}
+	// 공지사항 검색
+	@RequestMapping("/noticeSearch.bo")
+	@ResponseBody
+	public NoticeVO noticeSearch(NoticeVO nVO, HttpServletRequest req) {
+		String word = nVO.getWord(); //가져오는 코드
+		List<NoticeVO> list = nDAO.noticeSearch(word);
+		nVO.setList(list);
+		return nVO;
+	}
 	
 	
 	// 자주하는질문
@@ -90,16 +80,6 @@ NoticeDAO nDAO;
 		String view = "LibraryInfo/joinGide";
 		mv.setViewName(view);
 		return mv;
-	}
-	
-	@RequestMapping("/noticeSearch")
-	@ResponseBody
-	public NoticeVO noticeSearch(NoticeVO nVO, HttpServletRequest req) {
-		String word = nVO.getWord(); //가져오는 코드
-
-		List<NoticeVO> list = nDAO.noticeSearch();
-		
-		return nVO;
 	}
 	
 }

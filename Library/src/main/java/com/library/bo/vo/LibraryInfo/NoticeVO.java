@@ -2,10 +2,12 @@ package com.library.bo.vo.LibraryInfo;
 
 import java.util.List;
 
+import com.library.bo.util.PageUtil;
+
 /**
- * @author Koala
+ * @author 안다예
  *
- */   
+ */
 public class NoticeVO {
 	private int rno;
 	private int no; //번호
@@ -16,9 +18,23 @@ public class NoticeVO {
 	private String isShow; //공개여부
 	private String body; //본문글
 	private String word;//검색어
+	private PageUtil pUtil;
+	private String isSearch;
 	private List<NoticeVO> list;
 
 	
+	public String getIsSearch() {
+		return isSearch;
+	}
+	public void setIsSearch(String isSearch) {
+		this.isSearch = isSearch;
+	}
+	public PageUtil getpUtil() {
+		return pUtil;
+	}
+	public void setpUtil(PageUtil pUtil) {
+		this.pUtil = pUtil;
+	}
 	public List<NoticeVO> getList() {
 		return list;
 	}
